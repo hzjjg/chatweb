@@ -1,0 +1,21 @@
+<div *ngIf="function" [ngSwitch]="function.type" class="function-wrapper">
+    <h2 class="header">
+        <a href="javascript:;" class="btn-back" (click)="navBack()">
+            <i class="fa fa-angle-left"></i>
+        </a>
+        <div class="title text-center">
+            {{function.name}}
+        </div>
+    </h2>
+    <div class="content">
+        <object *ngSwitchCase="'flash'" [width]="function.width" [height]="function.height" [data]="function.src" type="application/x-shockwave-flash">
+            <param name="wmode" value="transparent">
+        </object>
+        <!--scrolling="yes"-->
+        <iframe *ngSwitchCase="'iframe'" [src]="function.src" frameborder="0">
+
+        </iframe>
+        <embed *ngSwitchCase="'embed'" [src]="function.src" quality="high" width="100%" height="244" align="middle" allowscriptaccess="always"
+            allowfullscreen="true" wmode="transparent" type="application/x-shockwave-flash" autostart="true">
+    </div>
+</div>

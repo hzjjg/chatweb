@@ -1,0 +1,56 @@
+<div class="layout-container py-4">
+    <div class="mine layout clearfix" (click)="openUserInfo()">
+        <div class="float-left">
+            <img src="{{userInfo?.avatar}}" alt="">
+        </div>
+        <div class="mine-content">
+            <div class="nickname text-truncate">{{userInfo?.nickname}}</div>
+            <div class="username text-truncate" *ngIf="userInfo && userInfo.userType != 'Visitor'">
+                <span>账号：</span>
+                <span>{{userInfo.username}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="layout mt-4" *ngIf="userInfo && userInfo.userType == 'Customer'">
+        <div class="layout-item clearfix" (click)="openWealth()">
+            <div class="float-left tool-icon">
+                <i class="fa fa-diamond" style="color: #cfa900;"></i>
+            </div>
+            <div class="tool-text">我的钱包</div>
+        </div>
+    </div>
+    <!--<div class="layout py-3 px-4 mt-4">-->
+    <!--<i class="fa fa-diamond" style="color: #cfa900;font-size:20px;"></i>-->
+    <!--<span class="pl-3">我的钱包</span>-->
+    <!--</div>-->
+
+    <div class="layout mt-4" *ngIf="userInfo && userInfo.userType != 'Visitor'">
+        <div class="layout-item clearfix" (click)="openChangePwd()">
+            <div class="float-left tool-icon">
+                <i class="fa fa-pencil" style="color: #009ef7;"></i>
+            </div>
+            <div class="tool-text">修改密码</div>
+        </div>
+        <div class="layout-item clearfix" (click)="logout()">
+            <div class="float-left tool-icon">
+                <i class="fa fa-power-off" style="color: #009ef7;"></i>
+            </div>
+            <div class="tool-text">退出登录</div>
+        </div>
+    </div>
+
+    <div class="layout mt-4" *ngIf="!userInfo || userInfo.userType=='Visitor'" >
+        <div class="layout-item clearfix" routerLink='/login'>
+            <a >登录/注册</a>
+        </div>
+    </div>
+
+    <!--<div class="layout py-3 px-4 mt-4" *ngIf="userInfo && userInfo.userType != 'Visitor'" (click)="openChangePwd()">-->
+    <!--<i class="fa fa-pencil" style="color: #009ef7;font-size:20px;"></i>-->
+    <!--<span class="pl-3">修改密码</span>-->
+    <!--</div>-->
+    <!--<div class="layout py-3 px-4 mt-4" (click)="logout()">-->
+    <!--<i class="fa fa-power-off" style="color: #009ef7;font-size:20px;"></i>-->
+    <!--<span class="pl-3">退出登录</span>-->
+    <!--</div>-->
+</div>

@@ -1,0 +1,89 @@
+<div class="chat-message-wrapper clearfix" [id]="'msg' + message.msgId">
+    <div class="message" [ngClass]="{me:isMyMsg,you:!isMyMsg}">
+        <div class="message-time" ng-if="message.displayTime">{{message.displayTime}}</div>
+
+        <!--| imtime-->
+        <!-- GroupTip 群提示消息 -->
+        <div class="group-tip-msg" *ngIf="message.msgType== msgTypes.GROUP_TIP">
+            <div class="text-center">
+                <span class="group-tip-content" *ngIf="message.tipType == tipType.JOIN">{{message.nickname}}加入了聊天室</span>
+                <span class="group-tip-content" *ngIf="message.tipType == tipType.QUIT">{{message.nickname}}退出了聊天室</span>
+                <span class="group-tip-content" *ngIf="message.tipType == tipType.PULL_RED_PACKET">
+                    <img src="/images/lucky_money.png" alt="" class="pr-1" style="height: 16px; vertical-align: -3px">{{message.nickname}}领取了{{message.packetFrom}}的红包
+                </span>
+                <span class="group-tip-content" *ngIf="message.tipType == tipType.GAG">
+                    <span>{{message.nickname}}被禁言</span>
+                    <span *ngIf="message.expiryTime">至{{message.expiryTime | date:'yyyy-MM-dd HH:mm:ss'}}</span>
+                </span>
+            </div>
+        </div>
+
+        <!-- 群通知 -->
+        <ng-container *ngIf="message.msgType== msgTypes.GROUP_TIP">
+            <div class="user-msg group-notice-msg" *ngIf="message.tipType == tipType.NOTICE">
+                <!-- <h4 class="message-from">群通知</h4> -->
+                <!-- <a href="javascript:;" class="avatar">
+                    <img style="display: block; width: 100%" src="" alt>
+                </a> -->
+                <div class="content">
+                    <div class="bubble chat-notice-bubble text-message">
+                        <div class="plain">
+                            <pre class="html-edit" [innerHTML]="content"></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+        
+
+        <div class="user-msg" *ngIf="message.msgType != msgTypes.GROUP_TIP">
+            <h4 class="message-from" *ngIf="!isMyMsg && sessionType !=SESSION_TYPE.C2C">{{message.fromNick}}</h4>
+            <a href="javascript:;" class="avatar" (click)="openUserInfo()">
+                <img style="display: block; width: 100%" src="{{message.fromAvatar}}" alt>
+            </a>
+            <div class="content">
+                <!-- Text 纯文本消息-->
+                <div class="bubble text-message" [ngClass]="{right:isMyMsg,left:!isMyMsg}" *ngIf="message.msgType==msgTypes.TEXT">
+                    <div class="plain">
+                        <pre [innerHTML]="content"></pre>
+                        <!-- <img class="message-icon-loading" src alt> -->
+                        <!-- <i class="message-icon-fail"></i> -->
+                    </div>
+                </div>
+
+                <!-- Image 图片消息-->
+                <div class="bubble bubble-image image-message" [ngClass]="{right:isMyMsg,left:!isMyMsg}" *ngIf="message.msgType==msgTypes.IMAGE">
+                    <div class="plain">
+                        <img src="{{message.content}}" [ngStyle]="{'width': imgWidth, 'height': imgHeight }"  (click)="openBigImage(message.content)"
+                            alt>
+                        <!-- <i class="message-icon-fail"></i> -->
+                    </div>
+                </div>
+
+                <!-- Redpacket 红包消息 -->
+                <div class="bubble bubble-red-packet red-packet-message" [ngClass]="{right:isMyMsg,left:!isMyMsg,opened:redPacketMessage.redPacketStatus !== 'Normal'}"
+                    *ngIf="redPacketMessage" (click)="openRedPacket()">
+                    <div class="plain">
+                        <div class="red-packet-message-content">
+                            <div class="red-packet-body row no-gutters">
+                                <img *ngIf="redPacketMessage.redPacketStatus == 'Normal'" src="/images/red-packet/lucky_money.png" alt=" ">
+                                <img *ngIf="redPacketMessage.redPacketStatus !== 'Normal'" src="/images/red-packet/lucky_money_open.png" alt=" ">
+                                <div class="col info">
+                                    <div class="description" title="{{redPacketMessage.description}}">{{redPacketMessage.description}}</div>
+                                    <div class="status" *ngIf="redPacketMessage.redPacketStatus == 'Normal'">查看红包</div>
+                                    <div class="status" *ngIf="redPacketMessage.redPacketStatus == 'HaveReceived'">红包已领取</div>
+                                    <div class="status" *ngIf="redPacketMessage.redPacketStatus == 'Finished'">红包已抢完</div>
+                                </div>
+                            </div>
+                            <div class="red-packet-footer">
+                                <span>红包</span>
+                            </div>
+                        </div>
+                        <!-- <img class="message-icon-loading " src alt> -->
+                        <!-- <i class="message-icon-fail "></i> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

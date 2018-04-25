@@ -1,0 +1,98 @@
+@import "../../app/variables";
+// @import "../../app/share/scrollbar_mixin";
+
+$footer-height:56px;
+
+html, body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  font-size: 14px;
+}
+
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: $header-height;
+    background-color: $gray-800;
+    color: #fff;
+    align-items: center;
+    .logo{
+        margin-top: 5px;
+        img{
+            height: 30px !important;
+        }
+    }
+    .title{
+        font-size: 16px;
+        text-align: center;
+    }
+    .login{
+        line-height: $header-height;
+        margin-right: 10px;
+    }
+}
+
+footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right:0;
+    height: $footer-height;
+    align-items: center;
+    border-top: 1px solid $gray-200;
+    font-size: 12px;
+    .tab{
+        text-align: center;
+        color: $gray-600;
+        .fa{
+            padding-bottom: 4px;
+            font-size: 20px;
+        }
+        &.active{
+            color: $blue;
+        }
+    }
+
+}
+
+
+.body-container{
+    //position: fixed;
+    position: absolute;
+    //top: 0;
+    top: $header-height;
+    //bottom: 0;
+    bottom: $footer-height;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+}
+
+//.has-footer .body-container {
+//  bottom: $footer-height;
+//}
+
+.framework-tabbar {
+  background-color: #fff;
+}
+
+
+.rewrite-scrollbar {
+  @include scrollbar(rgba(256,256,256, 0.4));
+}
+
+.cst-serve-group {
+    position: relative;
+    height: 100%;
+    background-color: $gray-bg;
+    font-size: 13px;
+
+}
+
+.personal-info {
+    height: 100%;
+    background-color: #f5f5f5;
+}

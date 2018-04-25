@@ -1,0 +1,12 @@
+<div class="notice-wrapper" *ngIf="extension">
+    <div class="header">
+        <a href="javascript:;" class="btn-back" (click)="navBack()">
+            <i class="fa fa-angle-left"></i>
+        </a>
+        <div class="title text-center">
+            {{extension.name}}
+        </div>
+    </div>
+    <div class="content html-edit function-notice-content" [innerHTML]="extension.description">
+    </div>
+</div>

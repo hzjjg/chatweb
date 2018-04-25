@@ -1,0 +1,27 @@
+<div class="visitor-tip">
+    <div class="header">
+        <a href="javascript:;" class="btn-link btn-tip" (click)="modalRef.close()">
+            <i class="fa fa-times"></i>
+        </a>
+    </div>
+    <div class="content">
+        <div class="html-edit" style="font-size: 16px;" [innerHtml]="content"></div>
+
+        <div class="pt-4">
+            <ng-container *ngIf="isMobile">
+                <button trip-button type="button" theme="primary" (click)="routeLogin()">
+                    登录/注册
+                </button>
+            </ng-container>
+
+            <ng-container *ngIf="!isMobile">
+            <button trip-button type="button" theme="primary" (click)="openLogin()">
+                登录
+            </button>
+            <button trip-button type="button" theme="second" custom-class="ml-3" (click)="openRegister()">
+                注册
+            </button>
+            </ng-container>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,96 @@
+@import "../../app/variables";
+
+
+$menu-background-color: rgba(09, 23, 32, 0.8);
+$menu-item-height: 50px;
+$menu-item-stripe-color: rgba(09, 23, 32, 0.5);
+$menu-item-hover-color: darken(rgba(09, 23, 32, 0.5), 7.5%);
+
+
+.menu-container {
+  position: relative;
+  border-radius: 3px;
+  border: $view-border;
+  //overflow: hidden;
+}
+
+.siderbar-logo {
+  //background-color: $orange;
+  padding: 10%;
+  img {
+    width: 100%;
+  }
+}
+
+.menu {
+  display: block;
+  list-style: none;
+  padding: 0 0 20px;
+  margin: 0;
+  background-color: $menu-background-color;
+  color: #fff;
+  user-select: none;
+  .menu-item {
+    position: relative;
+    display: inline-block;
+    height: auto;
+    width: 100%;
+    padding: 4px 0;
+    &:hover .cst-serve {
+      display: block;
+    }
+    &:nth-child(2n-1) {
+      background-color: $menu-item-stripe-color;
+    }
+    @include hover {
+      background-color: $menu-item-hover-color
+    }
+
+  }
+  .menu-icon {
+    //height: 20px;
+    //margin-bottom: 3px;
+    color: $white;
+    font-size: 20px;
+    text-align: center;
+  }
+  .menu-title {
+    padding-top: 2px;
+    text-align: center;
+    color: #fff;
+    font-weight: lighter;
+    font-size: 12px;
+    @include text-truncate();
+  }
+}
+
+.cst-serve {
+  overflow: hidden;
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 66px;
+  padding: 5px 0;
+  border-radius: 4px;
+  background-color: rgba(9, 23, 32, 0.8);
+  li {
+    padding: 5px 10px;
+    height: 35px;
+    & > a {
+      display: block;
+      height: 100%;
+      line-height: 25px;
+      width: 92px;
+      padding-left: 28px;
+      border: 1px solid transparent;
+      text-align: center;
+      color: #666;
+    }
+    .qq-cst {
+      background: url("/images/cst-serve.png") no-repeat;
+    }
+    .online-cst {
+      background: url("/images/online.png") no-repeat;
+    }
+  }
+}

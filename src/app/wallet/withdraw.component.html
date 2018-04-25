@@ -1,0 +1,38 @@
+<div class="">
+    <form action="" class="fm-wrap form" #withdrawForm="ngForm" (ngSubmit)="submit(withdrawForm)">
+        <div class="fm-header clearfix">
+            <h1 class="fm-title float-left">提现</h1>
+            <a href="javascript:;" class="float-right btn-link fm-btn-link" (click)="modalRef.close()">
+                <i class="fa fa-times"></i>
+            </a>
+        </div>
+        <div class="fm-body px-4">
+            <div class="pb-4 clearfix">
+                <label class="float-left">到账户</label>
+                <div class="" style="margin-left: 60px">
+                    <select class="form-control" [(ngModel)]="selectBank" name="selectBank">
+                        <option *ngFor="let item of banks" [value]="item.id">{{item.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="pb-3">
+                <span>提现金额</span>
+            </div>
+            <div class="pb-3 clearfix" style="border-bottom: 1px solid #e5e5e5">
+                <b class="float-left" style="font-size: 24px; line-height: 56px">￥</b>
+                <div style="margin-left: 30px">
+                    <input type="text" class="form-control" style="font-size: 26px; padding: 10px" [(ngModel)]="money" name="money" required autocomplete="off">
+                </div>
+            </div>
+            <div class="py-1">
+                <span style="color:#999">当前零钱余额{{wallet}}元</span>
+                <a href="javascript:;" class="btn-link" (click)="presentAll()">全部提现</a>
+            </div>
+        </div>
+        <div class="px-3 pt-3">
+            <button trip-button type="submit" native-type="submit" custom-class="btn-block" loading="true" [disabled]="!withdrawForm.form.valid">
+                确定
+            </button>
+        </div>
+    </form>
+</div>

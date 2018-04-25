@@ -1,0 +1,42 @@
+<div class="layout-container py-4">
+
+    <!--不支持iframe-->
+    <div class="layout">
+        <ng-container *ngFor="let function of functions; let i = index">
+                <div class="layout-item clearfix" *ngIf="function.type != 'open'" [routerLink]="['/functional', function.name]">
+                    <div class="float-left tool-icon">
+                        <i [ngClass]="function.icon" style="color:#009ef7"></i>
+                    </div>
+                    <div class="tool-text">{{function.name}}</div>
+                </div>
+
+                <a class="layout-item clearfix" style="display: block" *ngIf="function.type == 'open'" [href]="function.src" target="_blank">
+                    <div class="float-left tool-icon">
+                        <i [ngClass]="function.icon" style="color:#009ef7"></i>
+                    </div>
+                    <div class="tool-text">{{function.name}}</div>
+                </a>
+
+        </ng-container>
+    </div>
+
+
+    <div class="layout" [ngClass]="{'mt-4': functions.length > 0}">
+        <div class="layout-item clearfix" *ngFor="let item of extensions" [routerLink]="['/extension', item.name]">
+            <div class="float-left tool-icon">
+                <i [ngClass]="item.icon" [ngStyle]="{'color': item.color}"></i>
+            </div>
+            <div class="tool-text">{{item.name}}</div>
+        </div>
+    </div>
+
+    <div class="layout mt-4 mb-4">
+        <div class="layout-item clearfix" [routerLink]="['/notices']">
+            <div class="float-left tool-icon">
+                <i class="fa fa-bell" style="color:#e27b00"></i>
+            </div>
+            <div class="tool-text">系统公告</div>
+        </div>
+    </div>
+
+</div>

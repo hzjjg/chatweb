@@ -1,0 +1,57 @@
+@import "../../variables";
+
+@include pc(){
+    :host{
+        display: block;
+        position: relative;
+    }
+    .close{
+        position: absolute;
+        top: -20px;
+        right: -20px;
+        height: 40px;
+        width: 40px;
+        background-color: #000;
+        border-radius: 50%;
+        font-size: 30px;
+        text-align: center;
+        line-height: 40px;
+        color: #fff;
+    }
+    .image-wrapper{
+        padding: 10px;
+        text-align: center;
+        img{
+            max-width: 580px;
+            box-shadow: 0 0 10px 0 rgba($color: #000000, $alpha: .2);
+        }
+    }
+}
+
+@include mobile(){
+    :host{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        flex: 1;
+    }
+    .close{
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        height: 40px;
+        width: 40px;
+        background-color: #000;
+        border-radius: 50%;
+        font-size: 34px;
+        text-align: center;
+        line-height: 40px;
+        color: #fff;
+    }
+    .image-wrapper{
+        text-align: center;
+        img{
+            max-width: 90%;
+        }
+    }
+}

@@ -1,0 +1,31 @@
+<div class="avatar">
+    <div class="header clearfix">
+        <h1 class="header-title float-left">更换头像</h1>
+        <div class="float-right">
+            <a href="javascript:;" (click)="modalRef.close()" style="color: #666;">
+                <i class="fa fa-times"></i>
+            </a>
+        </div>
+    </div>
+    <div class="body clearfix" style="padding: 10px">
+        <div>
+            <div class="float-left" style="padding: 10px;" *ngFor="let item of defaultAvatars; let i = index">
+                <a href="javascript:;" class="avatar-item" [ngClass]="{'active': i == selectAvatarIndex}" (click)="selectAvatar(i)">
+                    <img [src]="item" alt="">
+                </a>
+            </div>
+        </div>
+        <div class="file-upload float-left">
+            <label for="custom-input">
+                <i class="fa fa-upload"></i>
+                <span>上传头像</span>
+            </label>
+            <input id="custom-input" type="file" hidden (change)="fileChangeListener($event)">
+        </div>
+    </div>
+    <div class="footer text-right py-3">
+        <button trip-button type="button" theme="primary" loading="true" (click)="sureAvatar()">
+            确定
+        </button>
+    </div>
+</div>

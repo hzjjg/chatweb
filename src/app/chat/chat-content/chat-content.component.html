@@ -1,0 +1,39 @@
+<div class="chat-body">
+    <!--<div [hidden]="showChatNotice">-->
+    <div class="chat-content rewrite-scrollbar" [ngClass]="{'opacity': showChatNotice}" #chatContent>
+        <div class="load-history">
+            <a href="javascript:;" (click)="fetchHistoryMessages()" *ngIf="!historyLoading">查看历史记录</a>
+            <a href="javascript:;" *ngIf="historyLoading">加载中...</a>
+        </div>
+        <chat-message *ngFor="let message of messages; trackBy: trackByMessage" [message]="message"></chat-message>
+    </div>
+
+    <div class="connecting-tip" *ngIf="connecting">
+    <!-- <div class="connecting-tip"> -->
+        <span>断线重连中...</span>
+    </div>
+    
+    <div class="unread-msg-tip" *ngIf="unread" (click)="toBottom(true)">
+        <span> {{unread}} </span>
+        <span *ngIf="unread > 99"> 99+ </span>
+    </div>
+    
+    <div class="contextmenu" [ngClass]="{'active': !!showMenu}" #chatContextMenu>
+        <ul class="dropdown_menu">
+            <li>
+                <a href="javascript:;" (click)="clearChatContent()">
+                    <i class="fa fa-times"></i>
+                    <span class="pl-2">清空记录</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!--</div>-->
+    
+    <red-packet-tip class="red-packet-tip"></red-packet-tip>
+    <chat-notice></chat-notice>
+
+    <!-- <div class="tips">
+        <span>温馨提示：如果您有什么不明白可以联系客服。</span>
+    </div> -->
+</div>

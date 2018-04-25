@@ -1,0 +1,67 @@
+<div class="chat-footer chat-sender">
+    <div class="tool-bar clearfix">
+        <a class="fa fa-smile-o tool-item tool-brow" href="javascript:;" title="表情" (click)="toggleEmoticons($event)"></a>
+        <!--<ng-container *ngIf="this.room.chatOpts && this.room.chatOpts.enableOnlyStaffSpeech && this.userType != 'Staff'">-->
+            <!--<label class="tool-item tool-pic" title="图片">-->
+                <!--<i class="fa fa-image" (click)="alertGag()"></i>-->
+            <!--</label>-->
+        <!--</ng-container>-->
+        <!--<ng-container *ngIf="!(this.room.chatOpts && this.room.chatOpts.enableOnlyStaffSpeech && this.userType != 'Staff')">-->
+            <!--<label class="tool-item tool-pic" title="图片" *ngIf="isVisitor && sessionType == SESSION_TYPE.GROUP && room.chatOpts && !room.chatOpts.enableVisitorSpeech">-->
+                <!--<i class="fa fa-image" (click)="openLogin()"></i>-->
+            <!--</label>-->
+            <!--<label class="tool-item tool-pic" title="图片" *ngIf="!isVisitor || sessionType == SESSION_TYPE.C2C || (room.chatOpts && room.chatOpts.enableVisitorSpeech)">-->
+                <!--<input #fileUpload type="file" [options]="options" ngFileSelect (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput"-->
+                       <!--multiple>-->
+                <!--<i class="fa fa-image"></i>-->
+            <!--</label>-->
+        <!--</ng-container>-->
+
+        <label class="tool-item tool-pic" title="图片" (click)="filterUpload($event)">
+            <input #fileUpload type="file" [options]="options" ngFileSelect (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput"
+                   multiple>
+            <i class="fa fa-image"></i>
+        </label>
+
+        <a class="fa fa-gift tool-item tool-red-pick" href="javascript:;" title="红包" (click)="sendPacket()" *ngIf="sessionType == SESSION_TYPE.GROUP"></a>
+        <div #emoticonContainer class="emoticon-container clearfix" [ngClass]="{'active':openEmoticon}">
+            <ng-container *ngIf="openEmoticon">
+                <a href="javascript:;" class="emoticon" *ngFor="let emoticon of emoticons" (click)="selectEmoticon(emoticon)">
+                    <img class="emoji" [src]="emoticon.url" [alt]="emoticon.text">
+                </a>
+            </ng-container>
+        </div>
+        <div class="staffs">
+            <a href="javascript:;" (click)="toggleCst($event)">
+                <i class="fa fa-user"></i>
+                <span style="padding-left: 5px">客服</span>
+            </a>
+
+            <div class="cst-serve" [class.active]="showCstServe" #cstServe>
+                <room-contact></room-contact>
+            </div>
+        </div>
+    </div>
+    <div class="content row no-gutters">
+        <pre #editArea class="edit-area col" contenteditable="true" [chatcontenteditable]="editCtn" (contentEditChange)="updateEditCtn($event)"
+            (keydown)="onKeyDown($event)" (paste)="onPaste($event)"></pre>
+
+        <a class="btn-send" href="javascript:;" (click)="send()" title="按 enter 发送">
+            <div>
+                <span *ngIf="!isMobile">发送</span>
+                <i class="fa fa-paper-plane"></i>
+            </div>
+        </a>
+    </div>
+    <!--<div #suggestWrap class="menu-list" style="position: absolute; z-index: 10000;"  [ngStyle]="{'left': suggestLeft, 'top': suggestTop, 'diplay': showSuggest?'block':'none'}">-->
+        <!--<ul class="list-group">-->
+            <!--<li class="list-group-item" class="active">-->
+                <!--<a href="javascript:;"></a>-->
+            <!--</li>-->
+        <!--</ul>-->
+        <!--<div class="dropdown-menu">-->
+            <!--&lt;!&ndash; <a class="dropdown-item" href="javascript:;">1</a>-->
+            <!--<a class="dropdown-item" href="javascript:;">2</a> &ndash;&gt;-->
+        <!--</div>-->
+    <!--</div>-->
+</div>

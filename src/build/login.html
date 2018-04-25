@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <!--<meta http-equiv="keywords" content="chat">-->
+    <!--<meta http-equiv="description" content="chat">-->
+    <title>WChat</title>
+    <!--<link href="images/favicon32.png" rel="shortcut.icon" type="image/x-icon">-->
+    <link href="/assets/normalize-7.0.0/normalize.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="/build/login.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<div class="login-container">
+    <div class="login-wrap">
+        <div class="header">
+            <div>
+                <h1 class="header-title">登录</h1>
+            </div>
+        </div>
+        <div class="login-body">
+            <div class="hint"><span>输入您的帐号、密码登录</span></div>
+            <!--method="post" 网慢可以考虑post表单提交数据-->
+            <form id="login-form" class="login-form" onsubmit="return false">
+                <div class="loader"><i class="fa fa-circle-o-notch icon-loader"></i></div>
+                <div class="form-group">
+                    <input type="text" placeholder="请输入用户名" name="username" class="form-control">
+                </div>
+                <div class="form-group input-password">
+                    <input type="password" placeholder="请输入密码" name="password" class="form-control"><i class="fa login-pwd-icon"></i>
+                </div>
+                <div class="clearfix">
+                    <!--<div class="half-width">-->
+                    <!--<div class="half-left">-->
+                    <!--<input type="text" placeholder="请输入公司Key" name="corp-key" class="form-control">-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="half-width">-->
+                    <!--<div class="half-right">-->
+                    <button id="login-submit" type="submit" class="btn btn-login">登录</button>
+                    <!--</div>-->
+                    <!--</div>-->
+                </div>
+                <div class="login-error"><i class="fa fa-exclamation-triangle"></i><span class="notice-descript"></span></div>
+                <input id="login-host" type="hidden" name="loginHost" value="/">
+                <input name="userType" type="hidden" value="Staff">
+                <input id="login-remember-me" type="hidden" name="rememberMe" value="true">
+            </form>
+        </div>
+        <!--<div class="footer">-->
+        <!--<div><a href="javascript:;">想要注册账户使用软件？<span class="contact">联系我们！</span></a></div>-->
+        <!--</div>-->
+    </div>
+    <!--<div class="login-footer">-->
+    <!--</div>-->
+</div>
+<script type="text/javascript" src="/assets/jquery-3.0.0/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="/build/login.js"></script>
+<script>
+    var login = new window.Login();
+    login.init({
+        i18n: {
+
+        }
+    });
+</script>
+</body>
+</html>

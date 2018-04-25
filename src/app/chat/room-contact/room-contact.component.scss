@@ -1,0 +1,22 @@
+ul {
+  li {
+    padding: 5px 10px;
+    height: 35px;
+    & > a {
+      display: block;
+      height: 100%;
+      line-height: 25px;
+      width: 92px;
+      padding-left: 28px;
+      border: 1px solid transparent;
+      text-align: center;
+      color: #666;
+    }
+    .qq-cst {
+      background: url("/images/cst-serve.png") no-repeat;
+    }
+    .online-cst {
+      background: url("/images/online.png") no-repeat;
+    }
+  }
+}

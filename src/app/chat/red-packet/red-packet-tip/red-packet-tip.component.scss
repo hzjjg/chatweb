@@ -1,0 +1,155 @@
+@import "../../../variables";
+.red-packet-tip {
+    position: absolute;
+    top: 52px;
+    right: 10px;
+    text-align: center;
+    &:hover {
+        .tip-icon {
+            opacity: 1;
+        }
+        .btn-recent-red-packet {
+            opacity: 1;
+        }
+    }
+    .tip-icon {
+        opacity: .8;
+        width: 36px;
+        border-radius: 2px;
+        cursor: pointer;
+        &.remind {
+            transform-origin:center bottom;
+            // animation: shake .8s cubic-bezier(1, 0, 0, 1);
+            animation: shake 1.2s ease-out;
+            animation-iteration-count: infinite;
+        }
+    }
+    .btn-recent-red-packet {
+        display: block;
+        background-color: #f04c2d;
+        margin-top: 5px;
+        color: #fff;
+        border-radius: 4px;
+        font-size: 12px;
+        padding: 3px 8px;
+        text-align: center;
+        opacity: .8;
+    }
+}
+
+.tip-content {
+    position: absolute;
+    width: 160px;
+    left: -150px;
+    top: 0;
+    box-shadow: 0 0 20px -4px  rgba($color: #000000, $alpha: .2);    
+    background: #fff;
+    .red-packet-from {
+        border-bottom: 1px solid #e5e5e5;
+        padding: 5px 0;
+        text-align: left;
+        padding-left: 10px;
+        img {
+            // border: 2px solid #ccc;
+            width: 24px;
+            border-radius: 2px;
+        }
+        .nick-name {
+            font-size: 12px;
+            color: #999;
+        } // &.active {
+        //     border: 2px solid dodgerblue
+        // }
+    }
+    .tip-messages-wrapper {
+        height: 150px;
+        overflow-x: scroll;
+        text-align: left;
+        .tip-message {
+            font-size: 12px;
+            padding: 0 10px;
+            margin: 5px 0;
+        }
+    }
+    .btn-open-red-packet {
+        border-top: 1px solid #e5e5e5;
+        padding: 5px 0;
+        text-align: center;
+        a {
+            text-decoration: none;
+            color: dodgerblue;
+        }
+    }
+}
+
+.recent-red-packets {
+    background: #fff;
+    .content-header {
+        position: relative;
+        height: 40px;
+        border: 1px solid #e5e5e5;
+        .title {
+            padding: 8px 10px;
+        }
+        .fa-close {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            color: dodgerblue;
+        }
+    }
+    .red-packet-from {
+        float: left;
+        text-align: center;
+        margin: 10px;
+        width: 58px;
+        .red-packet {
+            display: block;
+        }
+        img {
+            width: 100%;
+            border-radius: 2px;
+        }
+        .nick-name {
+            font-size: 12px;
+            color: #999;
+        }
+    }
+}
+
+@keyframes blink {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes shake {
+    0% {
+        transform: rotate(0deg);
+    }
+    10%{
+        transform: rotate(-15deg);
+    }
+    20% {
+        transform: rotate(15deg);
+    }
+    30% {
+        transform: rotate(0);
+    }
+    40%{
+        transform: rotate(-7deg);
+    }
+    50% {
+        transform: rotate(0);
+    }
+}
+
+@include mobile() {
+    .red-packet-tip {}
+    .recent-red-packets {
+        top: 0;
+    }
+}

@@ -1,0 +1,69 @@
+<div class="contact-list">
+    <div class="chat-search">
+        <div class="search row no-gutters">
+            <div class="staffs" [hidden]="!isMobile">
+                <a href="javascript:;" (click)="toggleCst($event)">
+                    <i class="fa fa-user"></i>
+                </a>
+                <div class="cst-serve" [class.active]="showCstServe" #cstServe>
+                    <room-contact></room-contact>
+                </div>
+            </div>
+            <div class="col">
+                <input type="text" [(ngModel)]="searchValue" (ngModelChange)="search()" />
+                <a class="search-icon" href="javascript:;" (click)="search()">
+                    <i class="fa fa-search"></i>
+                </a>
+            </div>
+        </div>
+        <div class="online-count row pl-3 mt-2">
+            <ng-container>
+                <span *ngIf="_originalMembers">在线人数：</span>
+                <span *ngIf="_originalMembers">{{_originalMembers.length}}</span>
+            </ng-container>
+            <ng-container *ngIf="userInfo?.userType == 'Staff'">
+                <span class="pl-2" *ngIf="_originalMembers">用户：</span>
+                <span *ngIf="_originalMembers">{{_originalMembers | membersPipe:userType.Customer}}</span>
+
+                <span class="pl-2" *ngIf="_originalMembers">游客：</span>
+                <span *ngIf="_originalMembers">{{_originalMembers | membersPipe:userType.Visitor}}</span>
+            </ng-container>
+        </div>
+    </div>
+
+    <div #contacts class="contact-chat rewrite-scrollbar">
+        <ng-container *ngIf="!isMobile">
+            <contact-item *ngFor="let user of viewMemebers; trackBy: trackByUser" [user]="user" (menu)="openContextMenu($event)"></contact-item>
+        </ng-container>
+        <ng-container *ngIf="isMobile">
+            <contact-item *ngFor="let user of viewMemebers; trackBy: trackByUser" [user]="user" (click)="openUserInfo(user)"></contact-item>
+            <!-- <contact-item *ngFor="let user of members; trackBy: trackByUser" [user]="user" (click)="chat(user)"></contact-item> -->
+        </ng-container>
+    </div>
+
+    <div class="contextmenu" *ngIf="!isMobile" [ngClass]="{'active': !!selectedUserMenu}" #chatContextMenu>
+        <ul class="dropdown_menu">
+            <li>
+                <a href="javascript:;" (click)="goChat()" *ngIf="showChatButton">
+                    <i class="fa fa-commenting"></i>
+                    <span class="pl-2">聊天</span>
+                </a>
+                <a href="javascript:;" (click)="openUserInfo()">
+                    <i class="fa fa-user"></i>
+                    <span class="pl-2">查看资料</span>
+                </a>
+                <a href="javascript:;" (click)="kickOutUser()" *ngIf="userInfo?.userType == 'Staff' && (selectedUserMenu && userInfo.userId != selectedUserMenu.userId)">
+                    <i class="fa fa-user-times"></i>
+                    <span class="pl-1">踢出用户</span>
+                </a>
+                <a href="javascript:;" (click)="gossipUser()" *ngIf="userInfo?.userType == 'Staff' && (selectedUserMenu && selectedUserMenu.userType == 'Customer') && (userInfo.userId != selectedUserMenu.userId)">
+                    <i class="fa fa-ban"></i>
+                    <span class="pl-2">禁言</span>
+                </a>
+
+
+            </li>
+        </ul>
+    </div>
+
+</div>

@@ -1,0 +1,41 @@
+<div class="clearfix header-wrapper" [ngStyle]="styles" style="background-position: center;" (click)="openBannerHref()">
+<!--<div class="clearfix header-wrapper" [ngStyle]="{'background-image': 'url(' + (room.banner || '') + ')'}" style="background-position: center;" (click)="openBannerHref()">-->
+    <div class="topbar-logo float-left">
+        <a (click)="openLogoHref($event)">
+            <img src="{{room.logo}}" title alt>
+            <!--<img src="/images/logo/logo2.png" title alt>-->
+        </a>
+
+        <!--<a href="https://www.bl07.com/" back>-->
+            <!--<img src="/images/logo.png" title alt>-->
+        <!--</a>-->
+    </div>
+    <!--<div class="topbar-content float-left">-->
+    <!--</div>-->
+    <!--<div class="topbar-info float-right clearfix">-->
+        <!--<a href="javascript:;" class="ad float-right">-->
+            <!--<img src="/images/ad.jpg" alt="">-->
+        <!--</a>-->
+        <!--<div class="topbar-info float-right" *ngIf=" !user || user.userType=='Visitor'">-->
+            <!--<ul class="clearfix">-->
+                <!--<li>-->
+                    <!--&lt;!&ndash;<button trip-button type="primary" custom-class="btn-radius login-btn" loading="true" disabled="disabled">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<i class="fa fa-user"></i>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<span>登录</span>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</button>&ndash;&gt;-->
+                    <!--<button class="login-btn" type="button" (click)="openLogin()">-->
+                        <!--<i class="fa fa-user"></i>-->
+                        <!--<span>登录</span>-->
+                    <!--</button>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<button class="register-btn" type="button" (click)="openRegister()">-->
+                        <!--<i class="fa fa-user"></i>-->
+                        <!--<span>注册</span>-->
+                    <!--</button>-->
+
+                <!--</li>-->
+            <!--</ul>-->
+        <!--</div>-->
+    <!--</div>-->
+</div>

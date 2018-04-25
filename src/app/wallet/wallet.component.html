@@ -1,0 +1,50 @@
+<div class="px-3 wealth-wrap clearfix">
+    <div class="float-right pt-1" style="position: relative; z-index: 999">
+        <a href="javascript:;" class="btn-link" (click)="modalRef.close()">
+            <i class="fa fa-times"></i>
+        </a>
+    </div>
+    <div class="py-5">
+        <div class="wealth-header">
+            <div class="wealth-icon">
+                <i class="fa fa-diamond"></i>
+            </div>
+        </div>
+        <div class="wealth-title py-3">
+            <span>我的零钱</span>
+        </div>
+        <div class="wealth-money pb-3">
+            <span>￥</span>
+            <span>{{userWallet?.balance}}</span>
+        </div>
+
+        <div class="wallet-red pb-3">
+            <a href="javascript:;" (click)="openRedPacket()">
+                <span>收到红包的记录</span>
+            </a>
+        </div>
+
+        <div class="pb-3">
+            <div class="mb-3">
+                <button trip-button type="button" theme="primary" custom-class="btn-block" loading="true" (click)="openConversionMoney()">
+                    提现
+                </button>
+            </div>
+            <div class="mb-3">
+                <button trip-button type="button" theme="primary" custom-class="btn-block" loading="true" (click)="recharge()">
+                    充值
+                </button>
+            </div>
+            <div class="text-center mt-3">
+                <a class="text-secondary history" href="javascript:;" (click)="openConversionHistory()">
+                    <span>提现记录</span>
+                </a>
+            </div>
+        </div>
+        <!--<div>-->
+        <!--<button trip-button type="info" custom-class="btn-block" loading="true">-->
+        <!--充值-->
+        <!--</button>-->
+        <!--</div>-->
+    </div>
+</div>

@@ -1,0 +1,55 @@
+<div class="history-container">
+    <div class="header">
+        <div class="title">
+            <span>提现记录</span>
+        </div>
+        <a href="javascrpt:;" class="back" (click)="back()" *ngIf="isMobile">
+            <i class="fa fa-angle-left"></i>
+        </a>
+        <a href="javascrpt:;" class="close" (click)="close()" *ngIf="!isMobile">
+            <i class="fa fa-close"></i>
+        </a>
+    </div>
+
+    <div class="content">
+        <ul class="histories" *ngIf="histories">
+            <li *ngFor="let item of histories">
+                <div class="clearfix">
+                    <div class="float-left left">
+                        <div class="remark" *ngIf="item.remark">
+                            <span>{{item.remark}}</span>
+                        </div>
+
+                        <div class="create-time" *ngIf="item.createTime">
+                            <span>创建时间：{{item.createTime | date:'yyyy-MM-dd HH:mm:ss'}}</span>
+                        </div>
+
+                        <div class="review-time" *ngIf="item.reviewTime">
+                            <span>审核时间：{{item.reviewTime | date:'yyyy-MM-dd HH:mm:ss'}}</span>
+                        </div>
+
+                        <div class="reason text-truncate" *ngIf="item.reason">
+                            <span>原因：{{item.reason}}</span>
+                        </div>
+                    </div>
+                    <div class="float-right right">
+                        <div class="money text-truncate text-right">
+                            ￥{{item.money}}
+                        </div>
+                        <div class="status">
+                            <span *ngIf="item.status == workReviewStatus.WAITING">审核中</span>
+                            <span *ngIf="item.status == workReviewStatus.ADOPTED" class="success">已通过</span>
+                            <span *ngIf="item.status == workReviewStatus.REJECTED" class="error">未通过</span>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div class="no-result" *ngIf="!histories || histories.length ==0">
+            <span>无记录</span>
+        </div>
+        <div class="tips mt-3 mb-3" *ngIf="histories && histories.length>=10">
+            仅显示最近十条转账记录
+        </div>
+    </div>
+</div>

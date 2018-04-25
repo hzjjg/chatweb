@@ -1,0 +1,36 @@
+<div class="menu-container">
+    <!--<div class="siderbar-logo">-->
+        <!--<a href="javascript:;">-->
+            <!--<img src="{{sideLogo}}" title alt>-->
+        <!--</a>-->
+    <!--</div>-->
+    <ul class="menu">
+        <li class="menu-item" *ngFor="let menu of menus">
+            <a [href]="menu.href" target="_blank">
+                <div class="menu-icon">
+                    <i class="fa" [ngClass]="menu.icon"></i>
+                </div>
+                <div class="menu-title">{{menu.name}}</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="javascript:;">
+                <div class="menu-icon">
+                    <i class="fa fa-user"></i>
+                </div>
+                <div class="menu-title">客服</div>
+            </a>
+            <div class="cst-serve">
+                <room-contact></room-contact>
+            </div>
+        </li>
+        <li class="menu-item">
+            <a href="javascript:;" [href]="url">
+                <div class="menu-icon">
+                    <i class="fa fa-floppy-o"></i>
+                </div>
+                <div class="menu-title">存到桌面</div>
+            </a>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,53 @@
+<div style="position: relative">
+    <!--<span trip-loading [trip-loading]="loading"></span>-->
+    <form class="fm-wrap login-wrap" #loginForm="ngForm" (ngSubmit)="submit(loginForm)">
+        <div class="fm-header clearfix">
+            <a href="javascript:;" class="float-left back" (click)="close()" *ngIf="isMobile">
+                <i class="fa fa-angle-left"></i>
+            </a>
+            <h1 class="fm-title float-left">登录</h1>
+            <a href="javascript:;" class="float-right btn-link fm-btn-link close" (click)="close()" *ngIf="!isMobile">
+                <i class="fa fa-times"></i>
+            </a>
+        </div>
+        <div class="fm-body">
+            <div class="fm-error" [ngClass]="{active: isShowError}">
+                <i class="fa fa-exclamation-circle error-icon"></i>
+                <span>{{text}}</span>
+            </div>
+            <div class="fm-mask">
+                <input type="text" placeholder="请输入用户名" [(ngModel)]="loginInfo.username" #username="ngModel" name="username" required="true" pattern="^\w+$" />
+                <div *ngIf="username.invalid && (username.dirty || username.touched)" class="alert alert-danger">
+                    <div *ngIf="username.errors.pattern" class="mt-2">
+                        <span class="text-danger">仅限数字和字母和下划线</span>
+                    </div>
+                    <div *ngIf="username.errors.required" class="mt-2">
+                        <span class="text-danger">请输入用户名</span>
+                    </div>
+                </div>
+            </div>
+            <div class="fm-mask">
+                <input type="password" placeholder="请输入密码" [(ngModel)]="loginInfo.sign" #password="ngModel" name="sign" required="true" pattern="^\w+$" />
+                <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+                    <div *ngIf="password.errors.pattern" class="mt-2">
+                        <span class="text-danger">仅限数字和字母和下划线</span>
+                    </div>
+                    <div *ngIf="password.errors.required" class="mt-2">
+                        <span class="text-danger">请输入密码</span>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <button trip-button type="submit" theme="primary" native-type="submit" custom-class="btn-block fm-button" loading="true">
+                    登录
+                </button>
+            </div>
+        </div>
+        <div class="fm-footer clearfix">
+            <div class="float-right">
+                <a href="javascript:;" class="btn-link fm-btn-link" (click)="openRegister()">注册</a>
+            </div>
+        </div>
+
+    </form>
+</div>

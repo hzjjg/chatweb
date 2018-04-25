@@ -1,0 +1,34 @@
+<div class="chat-area" #chatArea>
+    <div class="chat-header" [hidden]="isMobile">
+        <div class="notice clearfix" [hidden]="sessionType == SESSION_TYPE.C2C">
+            <div class="notice-content-wrapper clearfix" #noticeWrapper>
+                <div class="notice-content float-left" [hidden]="!showNotice" #notice>
+                    <!--{{noticeContent || '无公告消息'}}-->
+                    <span *ngIf="!notices || notices.length == 0">无公告消息</span>
+                    <ng-container *ngIf="notices && notices.length > 0">
+                        <span *ngFor="let notice of notices | orderBy: 'order'" class="pr-5">{{notice.content}}</span>
+                    </ng-container>
+                </div>
+            </div>
+            <a href="javascript:;" *ngIf="!showNotice" class="float-left" (click)="seeNotice()">查看公告</a>
+            <a class="float-right" href="javascript:;" *ngIf="showNotice" (click)="hideNotice()">
+                <i class="fa fa-close"></i>
+            </a>
+        </div>
+
+        <div class="title" *ngIf="sessionType == SESSION_TYPE.C2C">
+            <a href="javascript:;" class="exit-c2c ml-3" (click)="exitC2C()">
+                <i class="fa fa-reply"></i>
+                <span>返回群聊</span>
+            </a>
+
+            <span>{{chatWithNickName}}</span>
+
+        </div>
+
+    </div>
+
+    <chat-content [sessionType]="sessionType" [chatWith]="chatWith"></chat-content>
+    <chat-editor [sessionType]="sessionType" [chatWith]="chatWith"></chat-editor>
+
+</div>

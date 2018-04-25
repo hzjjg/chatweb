@@ -1,0 +1,42 @@
+<div class="picker">
+    <div class="row no-gutters picker-wrapper" [ngStyle]="{'height.rem':visableCounts*soltItemHeight}" #pickWrapper>
+
+        <div class="picker-target-border" [ngStyle]="pickerTargetBorderStyles">
+
+        </div>
+
+        <!--循环选项块-->
+        <ng-container *ngFor="let solt of solts;index as i">
+
+            <div class="col picker-solt" [ngStyle]="{'flex':solt.flex}">
+                <div class="picker-solt-item" *ngFor="let value of solt.values" [ngStyle]="{'height.rem':soltItemHeight}">{{value}}</div>
+            </div>
+
+            <!-- 分隔符 -->
+            <div *ngIf="solt.dividerContent" class="picker-solt-divider">
+                <div [ngStyle]="dividerStyles">{{solt.dividerContent}}</div>
+            </div>
+ 
+        </ng-container> 
+
+
+        <!-- <div class="col picker-scroll">
+            <div class="picker-items-item" *ngFor="let month of months">{{month}}</div>
+        </div>
+        <div class="col picker-scroll">
+            <div class="picker-items-item" *ngFor="let day of days">{{day}}</div>
+        </div> -->
+
+        <!--居中-->
+        <div class="picker-highlight"></div>
+    </div>
+
+    <div class="picker-operation clearfix">
+        <div class="float-left">
+            <a href="javascript:;">取消</a>
+        </div>
+        <div class="float-left">
+            <a href="javascript:;" (click)="cancel()" >确定</a>
+        </div>
+    </div>
+</div>

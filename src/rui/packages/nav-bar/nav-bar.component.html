@@ -1,0 +1,11 @@
+<header class="nav-bar row no-gutters">
+    <div class="nav-bar-buttons col text-left">
+        <ng-template [ngTemplateOutlet]="leftTmp"></ng-template>
+    </div>
+    <div class="nav-bar-title col-6 text-truncate" *ngIf="title && !titleTmp">
+        <span>{{title}}</span>
+    </div>
+    <div class="nav-bar-buttons col text-right">
+        <ng-template [ngTemplateOutlet]="rightTmp"></ng-template>
+    </div>
+</header>

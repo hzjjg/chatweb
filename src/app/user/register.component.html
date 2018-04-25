@@ -1,0 +1,110 @@
+<form #registerForm="ngForm" class="fm-wrap" (ngSubmit)="submit()">
+    <div class="fm-header clearfix">
+        <h1 class="fm-title float-left">注册</h1>
+        <a href="javascript:;" class="back" (click)="close()" *ngIf="isMobile">
+            <i class="fa fa-angle-left"></i>
+        </a>
+        <a href="javascript:;" class="float-right btn-link fm-btn-link" (click)="close()" *ngIf="!isMobile">
+            <i class="fa fa-times"></i>
+        </a>
+    </div>
+    <div class="fm-body">
+        <div class="fm-mask">
+            <!---->
+            <input type="text" placeholder="设置用户名 5-20个字符" [(ngModel)]="registerInfo.username" name="username" minlength="5" maxlength="20"
+                required #username="ngModel" pattern="^\w+$" />
+            <div class="fm-error" *ngIf="username.invalid && (username.dirty || username.touched)">
+                <i class="fa fa-exclamation-circle error-icon"></i>
+                <span *ngIf="username.errors.required">用户名不能为空</span>
+                <span *ngIf="username.errors.minlength">用户名长度太短</span>
+                <span *ngIf="username.errors.pattern">仅限数字和字母和下划线</span>
+            </div>
+        </div>
+
+        <div class="fm-mask" *ngIf="room.registerOpts && room.registerOpts.enableName">
+            <!---->
+            <input type="text" placeholder="真实姓名" [(ngModel)]="registerInfo.name" name="name" minlength="2" maxlength="20" required #name="ngModel"
+            />
+            <div class="fm-error" *ngIf="name.invalid && (name.dirty || name.touched)">
+                <i class="fa fa-exclamation-circle error-icon"></i>
+                <span *ngIf="name.errors.required">真实姓名不能为空</span>
+                <span *ngIf="name.errors.minlength">真实姓名长度太短</span>
+            </div>
+        </div>
+
+        <div class="fm-mask" *ngIf="room.registerOpts && room.registerOpts.enableQQ">
+            <!---->
+            <input type="text" placeholder="QQ" [(ngModel)]="registerInfo.qq" name="qq" minlength="5" maxlength="16" required #qq="ngModel"
+                pattern="^[1-9]\d*$" />
+            <div class="fm-error" *ngIf="qq.invalid && (qq.dirty || qq.touched)">
+                <i class="fa fa-exclamation-circle error-icon"></i>
+                <span *ngIf="qq.errors.required">qq不能为空</span>
+                <span *ngIf="qq.errors.minlength">qq长度太短</span>
+                <span *ngIf="qq.errors.pattern">仅限数字</span>
+            </div>
+        </div>
+
+        <div class="fm-mask" *ngIf="room.registerOpts && room.registerOpts.enableWeChat">
+            <!---->
+            <input type="text" placeholder="微信" [(ngModel)]="registerInfo.weChat" name="weChat" minlength="2" maxlength="20" required
+                #weChat="ngModel" />
+            <div class="fm-error" *ngIf="weChat.invalid && (weChat.dirty || weChat.touched)">
+                <i class="fa fa-exclamation-circle error-icon"></i>
+                <span *ngIf="weChat.errors.required">微信不能为空</span>
+                <span *ngIf="weChat.errors.minlength">微信长度太短</span>
+            </div>
+        </div>
+
+        <div class="fm-mask" *ngIf="room.registerOpts && room.registerOpts.enablePhone">
+            <!---->
+            <input type="text" placeholder="手机号码" [(ngModel)]="registerInfo.phone" name="phone" minlength="11" maxlength="11" required
+                #phone="ngModel" pattern="^1[0-9]{10}$"  />
+            <div class="fm-error" *ngIf="phone.invalid && (phone.dirty || phone.touched)">
+                <i class="fa fa-exclamation-circle error-icon"></i>
+                <span *ngIf="phone.errors.required">请输入有效手机号码</span>
+                <span *ngIf="phone.errors.pattern">请输入有效手机号码</span>
+            </div>
+        </div>
+
+        <div class="fm-mask">
+            <input type="password" placeholder="设置你的登录密码 6-20个字符" [(ngModel)]="registerInfo.pwd" name="pwd" maxlength="20" required minlength="6"
+                #pwd="ngModel" validateEqual="confirmPwd" reverse="true" pattern="^\w+$" />
+            <div class="fm-error" *ngIf="pwd.invalid && (pwd.dirty || pwd.touched)">
+                <i class="fa fa-exclamation-circle error-icon"></i>
+                <span *ngIf="pwd.errors.required">登录密码不能为空</span>
+                <span *ngIf="pwd.errors.minlength">登录密码长度太短</span>
+                <span *ngIf="pwd.errors.pattern">仅限数字和字母和下划线</span>
+            </div>
+        </div>
+        <div class="fm-mask">
+            <input type="password" placeholder="请再次输入你的登录密码" [(ngModel)]="registerInfo.confirmPwd" name="confirmPwd" required #confirmPwd="ngModel"
+                validateEqual="pwd" />
+            <div class="fm-error" *ngIf="confirmPwd.invalid && (confirmPwd.dirty || confirmPwd.touched)">
+                <i class="fa fa-exclamation-circle error-icon"></i>
+                <span *ngIf="confirmPwd.errors.required">登录密码不能为空</span>
+                <span *ngIf="confirmPwd.errors.validateEqual">两次输入的密码不一致</span>
+            </div>
+        </div>
+        <div class="fm-mask row no-gutters">
+            <div class="col-8">
+                <input type="text" placeholder="请输入验证码" [(ngModel)]="registerInfo.captcha" name="captcha" required #captcha="ngModel" />
+            </div>
+            <div class="col-4 pl-2">
+                <a href="javascript:;" (click)="refresh()" style="display: block; height: 100%; cursor: pointer;">
+                    <img [src]="captchaUrl">
+                </a>
+            </div>
+            <!--<div class="col-8 fm-error" *ngIf="captcha.invalid && (captcha.dirty || captcha.touched)">-->
+                <!--<i class="fa fa-exclamation-circle error-icon"></i>-->
+                <!--<span *ngIf="captcha.errors.required">验证码不能为空</span>-->
+            <!--</div>-->
+        </div>
+        <div>
+            <button trip-button type="submit" theme="primary" native-type="submit" custom-class="btn-block fm-button" loading="true"
+                [disabled]="!registerForm.form.valid">
+                注册并登录
+            </button>
+        </div>
+    </div>
+
+</form>

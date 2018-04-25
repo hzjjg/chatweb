@@ -1,0 +1,43 @@
+@import "../rui/css/app-common";
+
+$app: '' !default;
+
+@mixin pc {
+  @if ($app == 'pc') {
+    @content
+  }
+}
+
+@mixin mobile {
+  @if ($app == 'mobile') {
+    @content
+  }
+}
+
+
+
+$framework-sidebar-left: 11px;
+$framework-sidebar-top: 160px;
+$framework-sidebar-width: 68px;
+$framework-background-color: rgba(0, 0, 0, 0.2);
+
+$framework-header-top: 60px;
+
+$input-height: 40px;
+$form-border: #e5e5e5;
+$border-color: 1px solid #e5e5e5;
+$view-border: 1px solid rgba(0, 0, 0, 0.2);
+$user-border: 1px solid #292c33;
+
+$fm-login-button: #00C1DE;
+$fm-login-button-hover: #00b7d3;
+
+$body-sidebar-bg: #2e3238;
+//$body-sidebar-bg: #152330;
+
+$gray-bg:#ebebeb;
+
+$header-deep-gray:#393a3f;
+$header-height:50px;
+
+

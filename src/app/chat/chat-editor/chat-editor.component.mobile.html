@@ -1,0 +1,117 @@
+<div class="chat-footer chat-sender row no-gutters">
+    <div class="tool-bar clearfix">
+        <!--<a class="tool-item" href="javascript:;" title="表情" (click)="toggleEmoticons($event)">-->
+        <!--<i class="fa fa-smile-o"></i>-->
+        <!--</a>-->
+
+        <!-- <a class="tool-item tool-voice tool-other" href="javascript:;" (click)="toggleVoice()" [hidden]="!isVoice">
+            <i class="fa fa-rss"></i>
+        </a>
+        <a href="javascript:;" class="tool-item tool-voice tool-other" (click)="toggleVoice()" [hidden]="isVoice">
+            <i class="fa fa-keyboard-o"></i>
+        </a> -->
+
+        <div #emoticonContainer class="emoticon-container clearfix" [ngClass]="{'active':openEmoticon}">
+            <ng-container *ngIf="openEmoticon">
+                <a href="javascript:;" class="emoticon" *ngFor="let emoticon of emoticons" (click)="selectEmoticon(emoticon)">
+                    <img class="emoji" [src]="emoticon.url" [alt]="emoticon.text">
+                </a>
+            </ng-container>
+        </div>
+
+        <div class="staffs tool-item" hidden>
+            <a href="javascript:;" (click)="toggleCst($event)">
+                <i class="fa fa-user"></i>
+            </a>
+            <div class="cst-serve" [class.active]="showCstServe" #cstServe>
+                <room-contact></room-contact>
+            </div>
+        </div>
+    </div>
+    <div #editCtrl class="content col">
+        <div class="row no-gutters" [hidden]="isVoice">
+            <!--<form action="">-->
+            <!--<input name="text" type="text" />-->
+            <pre #editArea class="edit-area col" placeholder="请输入" contenteditable="true" [chatcontenteditable]="editCtn" (contentEditChange)="editCtn = $event"
+                (keydown)="onKeyDown($event)" (paste)="onPaste($event)"></pre>
+            <!--</form>-->
+            <!--<a class="btn-send" href="javascript:;" (click)="send()" *ngIf="editCtn.trim()">-->
+            <!--<div>-->
+            <!--<i class="fa fa-paper-plane"></i>-->
+            <!--</div>-->
+            <!--</a>-->
+        </div>
+
+        <div class="chat-voice pr-2" [hidden]="!isVoice">
+            <div class="btn-container" #voiceButton>
+                <button trip-button theme="primary" custom-class="btn btn-block">
+                    <span *ngIf="!islistening">按住说话</span>
+                    <span *ngIf="islistening && !isReadyCancelListen">松开结束</span>
+                    <span *ngIf="isReadyCancelListen">松开手指，取消发送</span>
+                </button>
+            </div>
+            <div class="voice-tip-wrapper" *ngIf="islistening || isReadyCancelListen">
+                <div class="listening" *ngIf="islistening && !isReadyCancelListen">
+                    <div class="icon">
+                        <i class="fa fa-microphone"></i>
+                    </div>
+                    <div class="tip">
+                        <span>手指上滑，取消发送</span>
+                    </div>
+                </div>
+                <div class="move-up-to-cancel" *ngIf="isReadyCancelListen">
+                    <div class="icon">
+                        <i class="fa fa-reply"></i>
+                    </div>
+                    <div class="tip">
+                        <span>松开手指，取消发送</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tool-bar">
+        <a class="tool-item" href="javascript:;" title="表情" (click)="toggleEmoticons($event)">
+            <i class="fa fa-smile-o"></i>
+        </a>
+
+        <a href="javascript:;" class="tool-item tool-other" (click)="toggleMoreTool($event)" *ngIf="!canSend">
+            <span class="plus-first"></span>
+            <span class="plus-second"></span>
+        </a>
+
+        <a class="tool-item tool-send" href="javascript:;" (click)="send()" *ngIf="canSend">
+            <div>
+                <i class="fa fa-paper-plane"></i>
+            </div>
+        </a>
+    </div>
+
+    <div class="tool-more row no-gutters" [hidden]="!showMoreTool" #toolMore>
+        <div class="col-3 text-center">
+            <!--<label class="tool-more-item" title="图片" *ngIf="isVisitor && sessionType == SESSION_TYPE.GROUP && room.chatOpts && !room.chatOpts.enableVisitorSpeech">-->
+                <!--<i class="fa fa-image" (click)="openLogin()"></i>-->
+            <!--</label>-->
+            <!--<label class="tool-more-item" *ngIf="!isVisitor || sessionType == SESSION_TYPE.C2C || (room.chatOpts && room.chatOpts.enableVisitorSpeech)">-->
+                <!--<input #fileUpload type="file" [options]="options" ngFileSelect (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput"-->
+                    <!--multiple>-->
+                <!--<i class="fa fa-image"></i>-->
+                <!--&lt;!&ndash;<a class="" href="javascript:;" title=""></a>&ndash;&gt;-->
+            <!--</label>-->
+            <label class="tool-more-item" title="图片" (click)="filterUpload($event)">
+                <input #fileUpload type="file" [options]="options" ngFileSelect (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput"
+                       multiple>
+                <i class="fa fa-image"></i>
+            </label>
+            <div class="tool-more-title pt-1">图片</div>
+        </div>
+        <div class="col-3 text-center" *ngIf="sessionType == SESSION_TYPE.GROUP">
+            <a class="tool-more-item" href="javascript:;" title="红包" (click)="sendPacket()">
+                <i class="fa fa-gift"></i>
+            </a>
+            <div class="tool-more-title pt-1">红包</div>
+        </div>
+
+    </div>
+    <audio src="http://www.huiyi8.com/down/89103/aHR0cDovL2RhdGEuaHVpeWk4LmNvbS8yMDE3L2doYS8wOC8xOS8xOTY4Lndhdg/"></audio>
+</div>

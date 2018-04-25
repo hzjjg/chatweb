@@ -1,0 +1,65 @@
+<form class="form" #userForm="ngForm" (ngSubmit)="submit(userForm)">
+
+    <div class="user-info-wrap">
+        <img class="profile-header-bg" src="/images/profile_header_bg_green.png">
+        <a href="javascript:;" class="delete-btn" (click)="modalRef.close()">
+            <i class="fa fa-times"></i>
+        </a>
+
+        <div class="user-info-header">
+
+            <div class="user-info-avatar">
+                <img [src]="userInfo.avatar" alt="" *ngIf="!isMyInfo">
+                <a href="javascript:;" (click)="settingAvatar()" *ngIf="isMyInfo">
+                    <img [src]="userInfo.avatar" alt="">
+                </a>
+            </div>
+            <div class="pt-3">
+                <div class="user-info-nickname text-center text-overflow">
+                    <b>{{originalUserInfo.nickname}}</b>
+                </div>
+            </div>
+            <!-- <div class="pt-2 pb-2">
+                <div class="user-info-signature text-center line-max-2">
+                    <p title="{{originalUserInfo.personalSignature}}">{{originalUserInfo.personalSignature}}</p>
+                </div>
+            </div> -->
+        </div>
+        <div class="user-info-body py-3">
+            <div class="row no-gutters pb-3" *ngIf="myUserInfo.userType == 'Staff' && userInfo.userType != 'Visitor'">
+                <label class="col-3 pr-3">账号</label>
+                <div class="col-6 pl-1">
+                    <span style="display: inline-block; padding: 6px 10px 6px 0">{{userInfo.username}}</span>
+                    <img src="/images/cst-icon2.png" *ngIf="userInfo.userType == 'Staff'" alt="" title="客服" style="display: inline-block; width: 31px; height: 31px;">
+                </div>
+            </div>
+            <div class="row no-gutters pb-3">
+                <label class="col-3 pr-3">昵称</label>
+                <div class="col-9 pr-1 pl-1">
+                    <div class="row no-gutters" *ngIf="isMyInfo">
+                        <div class="col-7">
+                            <input type="text" class="form-control" [disabled]="userInfo.userType == userType.Visitor" [(ngModel)]="userInfo.nickname" minlength="1" maxlength="20" name="nickname" #nickname="ngModel" required />
+                        </div>
+                        <div class="col-5 pl-3" *ngIf="nickname.invalid && (nickname.dirty || nickname.touched)">
+                            <span style="font-size: 12px; line-height: 31px; color: #f88" *ngIf="nickname.errors.required">不能为空</span>
+                        </div>
+                    </div>
+                    <span style="display: inline-block; padding: 6px 0" *ngIf="!isMyInfo">{{userInfo.nickname}}</span>
+                </div>
+            </div>
+            <!-- <div class="row no-gutters pb-3">
+                <label class="col-3 pr-3">个性签名</label>
+                <div class="col-8 pl-1 pr-1">
+                    <textarea name="personalSignature" class="form-control"  [(ngModel)]="userInfo.personalSignature" maxlength="150" name="personalSignature" *ngIf="isMyInfo"></textarea>
+                    <p style="padding: 6px 0" *ngIf="!isMyInfo">{{userInfo.personalSignature}}</p>
+                </div>
+            </div> -->
+            <div class="form-footer text-right px-3 pt-3" *ngIf="isMyInfo">
+                <button trip-button type="submit" theme="primary" native-type="submit" loading="true" [disabled]="!userForm.form.valid">
+                    提交
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
+

@@ -1,0 +1,12 @@
+<div class="message-box-header" *ngIf="title">
+    <span class="message-box-title">{{title}}</span>
+</div>
+<div class="message-box-body">
+    <div class="msgbox-message">{{message}}</div>
+</div>
+<div class="message-box-footer clearfix">
+    <a href="javascript:;" class="msgbox-btn cancel" *ngIf="showCancelButton" (click)="handleAction('cancel')">取消</a>
+    <a href="javascript:;" class="msgbox-btn confirm" [class.active]="!showCancelButton" (click)="handleAction('confirm')">确定</a>
+    <!--<button class="msgbox-btn cancel" *ngIf="showCancelButton" (click)="handleAction('cancel')">取消</button>-->
+    <!--<button class="msgbox-btn confirm" (click)="handleAction('confirm')">确定</button>-->
+</div>

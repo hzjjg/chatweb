@@ -1,0 +1,86 @@
+<div class="tabs">
+    <ul class="nav nav-tabs row no-gutters">
+        <ng-container *ngFor="let function of functions; let i = index">
+            <li *ngIf="function.type != 'open'" class="col text-truncate" [class.active]="i == active">
+                <a href="javascript:;" class="nav-link text-truncate" [title]="function.name" (click)="switchFunction(i,function.full)">
+                    <i [ngClass]="function.icon"></i>
+                    {{function.name}}
+                </a>
+            </li>
+            <li *ngIf="function.type == 'open'" class="col text-truncate">
+                <a [href]="function.src" class="nav-link text-truncate" target="_blank">
+                    <i [ngClass]="function.icon"></i>
+                    {{function.name}}
+                </a>
+            </li>
+        </ng-container>
+        <!--<li *ngFor="let function of functions; let i = index" class="col text-truncate" [class.active]="i == active">-->
+            <!--<a href="javascript:;" class="nav-link text-truncate" [title]="function.name" (click)="switchFunction(i,function.full)">-->
+                <!--<i [ngClass]="function.icon"></i>-->
+                <!--{{function.name}}-->
+            <!--</a>-->
+        <!--</li>-->
+    </ul>
+    <div class="tab-content" [class.full]="isFunctionFull">
+        <ng-container *ngFor="let function of functions; let i = index">
+            <div class="tab-panel rewrite-scrollbar active" *ngIf="i == active" [ngSwitch]="function.type">
+
+                <!--//http://www.9fc.com/video/pk10/carracingdx3.swf-->
+                <object *ngSwitchCase="'flash'" [width]="function.width" [height]="function.height" [data]="function.src" type="application/x-shockwave-flash">
+                    <param name="wmode" value="transparent">
+                    <!--<param name="src" value="">-->
+                </object>
+                <iframe *ngSwitchCase="'iframe'" [src]="function.src" frameborder="0">
+
+                </iframe>
+                <embed *ngSwitchCase="'embed'" [src]="function.src" quality="high" width="100%" height="244" align="middle" allowscriptaccess="always"
+                       allowfullscreen="true" wmode="transparent" type="application/x-shockwave-flash" autostart="true">
+                <!--<video *ngSwitchCase="'embed'" src="blob:http://www.yy.com/46fcec75-1a44-4464-9fff-10d797ed11fb" autoplay="" data-role="media" width="681" height="511" style="left: 0px; top: -64px; transform: rotate(0deg) translateZ(0px);"></video>-->
+            </div>
+        </ng-container>
+
+    </div>
+
+    <div class="notice-list" *ngIf="extensions" [hidden]="isFunctionFull">
+        <ul class="nav-tabs">
+            <ng-container *ngIf="extensions && extensions.length <= 5">
+                <li *ngFor="let extension of extensions; let i = index;" [class.active]="i == noticeActive">
+                    <a href="javascript:;" class="text-truncate" title="{{extension.name}}" (click)="switchNotice(i)">{{extension.name}}</a>
+                </li>
+            </ng-container>
+            <ng-container *ngIf="extensions && extensions.length > 5">
+                <ng-container *ngFor="let extension of extensions; let i = index;">
+                    <li *ngIf="i < 4" [class.active]="i == noticeActive">
+                        <a href="javascript:;" class="text-truncate" title="{{extension.name}}" (click)="switchNotice(i)">{{extension.name}}</a>
+                    </li>
+                </ng-container>
+                <li>
+                    <a href="javascript:;" class="text-truncate" (click)="showMoreNavTabs(i)">
+                        更多
+                        <i class="fa fa-angle-up pl-1" *ngIf="!showMoreNav"></i>
+                        <i class="fa fa-angle-down pl-1" *ngIf="showMoreNav"></i>
+                    </a>
+                </li>
+            </ng-container>
+            <!--<li *ngFor="let notice of notices; let i = index" [class.active]="i == noticeActive">-->
+            <!--<a href="javascript:;" (click)="noticeActive = i">{{notice.name}}</a>-->
+            <!--</li>-->
+        </ul>
+        <div class="nav-tabs-more" *ngIf="showMoreNav">
+            <ul>
+                <ng-container *ngFor="let extension of extensions; let i = index;">
+                    <li *ngIf="i >= 4" [class.active]="i == noticeActive">
+                        <a href="javascript:;" class="text-truncate" title="{{extension.name}}" (click)="switchNotice(i)">{{extension.name}}</a>
+                    </li>
+                </ng-container>
+            </ul>
+        </div>
+
+        <div class="notice-content">
+            <div class="notice-panel html-edit rewrite-scrollbar" [innerHTML]="extension.description" *ngFor="let extension of extensions; let i = index;" [class.active]="i == noticeActive" #noticeContent>
+            </div>
+            <!--<div *ngFor="let notice of notices; let i = index" class="notice-panel rewrite-scrollbar" [class.active]="i == noticeActive">{{notice.content}}</div>-->
+        </div>
+    </div>
+
+</div>

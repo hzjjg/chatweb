@@ -1,0 +1,12 @@
+:host {
+  position: relative;
+  padding: 15px;
+  .close {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+  }
+  .cropper-wrapper {
+    margin-top: 30px;
+  }
+}

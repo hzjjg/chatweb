@@ -1,0 +1,140 @@
+@import "../variables";
+.chat-item {
+  overflow: hidden;
+  position: relative;
+  padding: 12px 8px 11px 18px;
+  .chat-item-ext {
+    font-size: 13px;
+    color: #6b6f7c;
+    text-align: right;
+    .attr {
+      height: 20px;
+      line-height: 1.5;
+    }
+  }
+  .chat-item-avatar {
+    position: relative;
+    margin-right: 10px;
+    img {
+      display: block;
+      border-radius: 4px;
+      background-color: #fff;
+    }
+    .message-count-tip {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      background-color: red;
+      color: #fff;
+      height: 1rem;
+      width: 1rem;
+      font-size: 10px;
+      text-align: center;
+      line-height: 1rem;
+      border-radius: .5rem;
+      &.count-overflow{
+        width: 22px;
+      }
+    }
+    .icon-terminal {
+      border-radius: 50%;
+      position: absolute;
+      color: $blue;
+      right: -6px;
+      font-size: 10px;
+      line-height: 11px;
+      bottom: 0px;
+      background: #fff;
+      border: 3px solid #fff;
+      opacity: .9;
+      &.fa-mobile {
+        width: 18px;
+        font-size: 16px;
+        line-height: 11px;
+        text-align: center;
+      }
+    }
+  }
+  .chat-item-icon {
+    &>img {
+      // display: block;
+      // width: 100%;
+    }
+  }
+  .chat-item-info {
+    .nickname {
+      font-weight: normal;
+      font-size: 13px;
+    }
+    .info {
+      font-size: 12px;
+    }
+  }
+}
+
+@include pc() {
+  .chat-item {
+    border-bottom: 1px solid #292c33;
+    .chat-item-avatar {
+      img {
+        width: 40px;
+        height: 40px;
+        background-color: #fff;
+      }
+    }
+    .chat-item-icon {
+      height: 40px;
+      line-height: 40px;
+      color: rgba($color: #fff, $alpha: .7);
+      font-size: 18px;
+      &>img {
+        height: 40px;
+        width: auto;
+        display: inline-block;
+      }
+    }
+    .chat-item-info {
+      .nickname {
+        line-height: 40px;
+        color: #fff;
+      }
+      .info {
+        color: #fff;
+      }
+    }
+  }
+}
+
+@include mobile() {
+  .chat-item {
+    border-bottom: 1px solid #e5e5e5;
+    background-color: #fff;
+    .chat-item-avatar {
+      img {
+        width: 30px;
+        height: 30px;
+        background-color: #eee;
+      }
+    }
+    .chat-item-icon {
+      // width: 30px;
+      height: 30px;
+      line-height: 30px;
+      font-size: 18px;
+      &>img {
+        height: 30px;
+        width: auto;
+        display: inline-block;
+      }
+    }
+    .chat-item-info {
+      .nickname {
+        line-height: 30px;
+        color: #666;
+      }
+      .info {
+        color: #666;
+      }
+    }
+  }
+}

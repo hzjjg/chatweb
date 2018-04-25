@@ -1,0 +1,137 @@
+@import "../../app/variables";
+
+.layout-container {
+  height: 100%;
+  background-color: $gray-bg;
+}
+.layout {
+  background-color: #fff;
+  font-size: 16px;
+  .layout-item {
+    padding: 12px 20px;
+    border-bottom: 1px solid $gray-200;
+    &:last-child {
+      border-bottom: 0;
+    }
+    .tool-icon {
+      width: 25px;
+      //font-size: 20px;
+      text-align: center;
+    }
+    .tool-text {
+      margin-left: 40px;
+      color: #212529;
+    }
+  }
+}
+
+//$footer-height:56px;
+//.functional-container{
+//  position: fixed;
+//  //position: absolute;
+//  left: 0;
+//  top: $header-height;
+//  bottom: $footer-height;
+//  width: 100%;
+//  background-color: $gray-bg;
+//  overflow-y: scroll;
+//  overflow-x: hidden;
+//  .functional{
+//    .item-nav{
+//      display: block;
+//      margin: 0;
+//      font-weight: normal;
+//      font-size: 16px;
+//      background-color: #fff;
+//      border-bottom: 1px solid $gray-200;
+//      padding: 12px 20px;
+//      color:#000;
+//      @include clearfix;
+//      .title{
+//        i{
+//          width: 36px;
+//          display: inline-block;
+//          font-size: 18px;
+//        }
+//      }
+//    }
+//    // &.expanded{
+//    //   .functional-card{
+//    //     display: block;
+//    //     position: fixed;
+//    //     left: 0;
+//    //     right: 0;
+//    //     top: $header-height;
+//    //     bottom: $footer-height;
+//    //     box-shadow: none;
+//    //     .header{
+//    //       position: relative;
+//    //       @include clearfix;
+//    //       background-color: $gray-bg;
+//    //       border-bottom: 1px solid $gray-400;
+//    //       padding: 10px 15px;
+//    //       margin: 0;
+//    //       .btn-expand{
+//    //         position: absolute;
+//    //         text-align: center;
+//    //         top: 0;
+//    //         left: 0;
+//    //         width: 40px;
+//    //         height: 100%;
+//    //         i{
+//    //           font-size: 26px;
+//    //           line-height: 50px;
+//    //         }
+//    //       }
+//    //       .title{
+//    //         font-weight: normal;
+//    //         font-size: 20px;
+//    //       }
+//    //     }
+//    //     .content{
+//    //       display: block;
+//    //       max-height: 100%;
+//    //       height: calc(100% - 51px);
+//    //       font-size: 16px;
+//    //       iframe{
+//    //         width: 100%;
+//    //         height: 100%;
+//    //       }
+//    //     }
+//    //     .fa-compress{
+//    //       display: inline;
+//    //     }
+//    //     .fa-expand{
+//    //       display: none;
+//    //     }
+//    //   }
+//    // }
+//    // .functional-card{
+//    //   display: none;
+//    //   background-color: $white;
+//    //   overflow: hidden;
+//    //   transform: all 0.3s;
+//    //   .fa-close{
+//    //     color: $gray-600;
+//    //   }
+//    //   .fa-compress{
+//    //     display: none;
+//    //   }
+//    // }
+//  }
+//
+//  // .notices{
+//  //   .functional{
+//  //     .functional-card{
+//  //       .content{
+//  //         overflow-y: scroll;
+//  //         padding: 15px;
+//  //         p{
+//  //           line-height: 1.6;
+//  //           font-size: 16px;
+//  //         }
+//  //       }
+//  //     }
+//  //   }
+//  // }
+//}

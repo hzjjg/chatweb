@@ -1,0 +1,11 @@
+<div class="select-container">
+    
+    <div class="selected-item clearfix" (click)="isShow = !isShow">
+        <div class="float-left mb-3">{{value}}</div>
+        <i class="fa fa-angle-down float-right text-secondary"></i>
+    </div>
+    
+    <div class="select-options" [ngClass]="{active: isShow}">
+        
+    </div>
+</div>

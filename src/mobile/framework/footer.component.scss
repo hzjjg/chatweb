@@ -1,0 +1,44 @@
+@import "../../app/variables";
+$footer-height:56px;
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: $footer-height;
+  background: #fff;
+  align-items: center;
+  border-top: 1px solid $gray-200;
+  font-size: 12px;
+  .tab {
+    text-align: center;
+    color: $gray-600;
+    .fa {
+      padding-bottom: 4px;
+      font-size: 20px;
+    }
+    &.active {
+      color: $blue;
+    }
+  }
+  .message {
+    position: relative;
+  }
+  .msg-tip {
+    overflow: hidden;
+    position: absolute;
+    top: -4px;
+    left: calc(50% + 7px);
+    width: 1rem;
+    font-size: 10px;
+    height: 1rem;
+    border-radius: .5rem;
+    background-color: red;
+    line-height: 1rem;
+    color: #fff;
+    text-align: center;
+    &.msg-tip-overflow{
+        width: 22px;
+    }
+  }
+}

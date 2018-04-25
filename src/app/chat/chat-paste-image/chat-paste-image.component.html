@@ -1,0 +1,22 @@
+<div class="chat-paste-image-container">
+    <div class="modal-header">
+        <span class="title">发送图片</span>
+        <a href="javascript:;" class="fa fa-close" (click)="close()"></a>
+    </div>
+    <div class="modal-body">
+        <div class="image-wrapper">
+            <img [src]="src" alt="">
+        </div>
+    </div>
+    <div class="modal-footer row no-gutters">
+        <div class="col text-center">
+            <button class="btn btn-secondary" (click)="close()">取消</button>
+        </div>
+        <div class="col text-center">
+            <button class="btn btn-primary" (click)="submit()" [disabled]="uploading">
+                <span *ngIf="!uploading">发送</span>
+                <span *ngIf="uploading">发送中...</span>
+            </button>
+        </div>
+    </div>
+</div>

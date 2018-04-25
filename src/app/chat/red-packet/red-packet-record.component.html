@@ -1,0 +1,57 @@
+<div class="red-packet-record-container">
+    <div class="header">
+        <a href="javascript:;" class="icon-close" (click)="close()">
+            <i class="fa fa-close"></i>
+        </a>
+        <span> | 收到的红包</span>
+    </div>
+
+    <div class="record-body">
+        <div class="user-info">
+            <div class="avatar">
+                <div class="img">
+                    <img [src]="user.avatar" alt="">
+                </div>
+            </div>
+            <div class="nickname">{{user?.nickname}}共收到</div>
+        </div>
+
+        <div class="my-result">
+            <div class="money">
+                <span class="number">{{statistic?.totalAmount}}</span>
+                <span class="unit">元</span>
+            </div>
+
+            <div class="records row no-gutters">
+                <div class="record col">
+                    <div class="num">{{statistic?.totalQuantity}}</div>
+                    <div class="discription">收到红包</div>
+                </div>
+                <!--<div class="record col">-->
+                <!--<div class="num">12</div>-->
+                <!--<div class="discription">手气最佳</div>-->
+                <!--</div>-->
+            </div>
+        </div>
+
+        <div class="results">
+            <div class="result" *ngFor="let log of logs">
+                <div class="info">
+                    <div class="sender">
+                        <!--宋征宇-->
+                        {{log.fromNick}}
+                    </div>
+                    <div class="date">
+                        {{log.time | date: 'MM-dd' }}
+                        <!--10-22-->
+                    </div>
+                </div>
+                <div class="money">
+                    {{log.money}}元
+                    <!--0.13元-->
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>

@@ -1,0 +1,76 @@
+<div class="contact-header">
+    <div class="user-container">
+        <div class="user clearfix" *ngIf="userInfo">
+            <div class="float-left user-avatar">
+                <a href="javascript:;" (click)="openUserInfo()">
+                    <img src="{{userInfo.avatar}}" alt>
+                </a>
+            </div>
+            <div class="user-right">
+                <div class="user-info">
+                    <div>
+                        <div class="clearfix">
+                            <h1 class="user-nickname float-left text-overflow">{{userInfo.nickname}}</h1>
+                            <a href="javascript:;" class="float-right" style="color: #999" (click)="switchTool($event)">
+                                <i class="fa fa-bars"></i>
+                            </a>
+                        </div>
+                        <div class="contextmenu" [ngClass]="{active: isShowTool}">
+                            <ul class="dropdown_menu">
+                                <li>
+                                    <a href="javascript:;" *ngIf="userInfo.userType != 'Visitor'" (click)="openChangePwd()">
+                                        <!--<a href="javascript:;" (click)="openChangePwd()">-->
+                                        <i class="fa fa-pencil-square"></i>
+                                        <span class="px-2">修改密码</span>
+                                        <i class="fa fa-exclamation" title="请到后端修改" *ngIf="userInfo.userType != 'Staff'" style="color: #f88"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;" (click)="openUserInfo()">
+                                        <i class="fa fa-user"></i>
+                                        <span class="pl-2">个人信息</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;" (click)="logout()" *ngIf="!isVisitor">
+                                        <i class="fa fa-power-off"></i>
+                                        <span class="pl-2">退出登录</span>
+                                    </a>
+                                </li>
+                                <!--<li>-->
+                                    <!--<a href="javascript:;" (click)="openLogin()" *ngIf="isVisitor">-->
+                                        <!--<i class="fa fa-power-off"></i>-->
+                                        <!--<span class="pl-2">登录</span>-->
+                                    <!--</a>-->
+                                <!--</li>-->
+                                <!--<li>-->
+                                    <!--<a href="javascript:;" (click)="openRegister()" *ngIf="isVisitor">-->
+                                        <!--<i class="fa fa-power-off"></i>-->
+                                        <!--<span class="pl-2">注册</span>-->
+                                    <!--</a>-->
+                                <!--</li>-->
+                            </ul>
+                        </div>
+                        <!--<p class="line-max-2" title="{{userInfo.personalSignature}}">{{userInfo.personalSignature}}</p>-->
+                    </div>
+
+                </div>
+                <div class="user-wealth clearfix" *ngIf="userInfo.userType == 'Customer'">
+                    <button trip-button type="button" theme="warning" custom-class="btn btn-sm" loading="true" (click)="openWealth()">
+                        我的钱包
+                    </button>
+                </div>
+                <div class="login-area clearfix" *ngIf="isVisitor">
+                    <!--<button trip-button type="button" theme="primary" custom-class="btn btn-sm btn-login float-left mr-3">-->
+                        <!--登录-->
+                    <!--</button>-->
+                    <!--<button trip-button type="button" theme="light" custom-class="btn btn-sm btn-login float-left">-->
+                        <!--注册-->
+                    <!--</button>-->
+                    <a href="javascript:;" (click)="openLogin()" class="mr-2">登录</a>
+                    <a href="javascript:;" (click)="openRegister()">注册</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

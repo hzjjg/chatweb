@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+         <title>{room.name!}</title>
+        <title>roomname</title>
+         <link rel="shortcut icon" href="{room.icon!}">
+        <link rel="shortcut icon" href="">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="keywords" content="chat,聊天室">
+        <meta http-equiv="description" content="聊天室">
+        <!--<link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">-->
+        <!--<link href="http://103.27.179.79/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet">-->
+        <link href="/assets/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <!--<base href="/">-->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111887127-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-111887127-1');
+            window.addEventListener('error', function (e) {
+                gtag('event', 'exception', {
+                    description: e,
+                    fatal: true
+                });
+            });
+        </script>
+        <!-- 移动端调试 -->
+        <script src="//cdn.bootcss.com/eruda/1.2.4/eruda.min.js"></script>
+        <script>eruda.init()</script>
+    </head>
+    <body>
+        <script> 
+            // window.ROOM_NO = '{room.roomNo!}'
+            window.ROOM_NO = '1000'
+        </script>
+        <!--[if lt IE 10]>
+        <div class="old-browser" style="position: absolute;top: 80px;left: 50%;margin-left: -400px;width: 800px;">
+            <img src="/images/older-browsers.png" alt="您的浏览器版本过低，为了保障您的访问安全，以及获得更友好的用户体验，建议您升级您的浏览器到最新版本。" width="800">
+        </div>
+        <![endif]-->
+
+        <root-app>
+            <div style="text-align:center;width:100%;position:absolute;top:50%;margin-top:-15px">
+                <i class="fa fa-circle-o-notch fa-spin fa-2x fa-fw text-secondary"></i>
+                <span class="sr-only">Loading...</span>
+                <!-- <svg width="30px"  height="30px"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-rolling" style="background: none;">
+                    <circle cx="50" cy="50" fill="none" ng-attr-stroke="{{config.color}}" ng-attr-stroke-width="{{config.width}}" ng-attr-r="{{config.radius}}" ng-attr-stroke-dasharray="{{config.dasharray}}" stroke="#999" stroke-width="10" r="35" stroke-dasharray="164.93361431346415 56.97787143782138">
+                        <animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform>
+                    </circle>
+                </svg> -->
+            </div>
+        </root-app>
+
+
+    </body>
+</html>

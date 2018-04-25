@@ -1,0 +1,109 @@
+@import '../../css/app-common';
+$toast-transition: opacity .3s,
+transform .4s;
+:host {
+    position: fixed;
+    max-width: 100%;
+    line-height: 20px;
+    z-index: 10000;
+    bottom: 30px;
+    right: 30px;
+    @include transition(all .3s);
+    &.fade .notice {
+        @include transition($toast-transition);
+        opacity: 0;
+        transform: translate(-30px, 0);
+    }
+    &.show .notice {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+}
+
+.notice {
+    position: relative;
+    height: 70px;
+    width: 200px;
+    background: rgba($color: #ffffff, $alpha: 1);
+    box-shadow: 0 0 5px 0 rgba($color: #000, $alpha: .2);
+    padding: 5px 10px;
+    border-radius: 4px;
+    .header {
+        position: absolute;
+        top: 3px;
+        // left: 10px;
+        color: cornflowerblue;
+    }
+    .footer {
+        position: absolute;
+        bottom: 2px;
+        // right: 10px;
+        font-size: 12px;
+    }
+    .content {
+        font-size: 13px;
+        margin-top: 20px;
+    }
+    .close {
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        font-size: 12px;
+    }
+}
+
+.notice.notify-success{
+    .header{
+        color: green;
+    }
+}
+
+.notice.notify-warning{
+    .header{
+        color: orange;
+    }
+}
+
+.notice.notify-info{
+    .header{
+        color: #999;
+    }
+}
+
+.notice.notify-error{
+    .header{
+        color: red;
+    }
+}
+
+// @include media-breakpoint-down(md) {
+//   .toast {
+//     padding: 5px 10px;
+//     border: 1px solid transparent;
+//     border-radius: 5px;
+//     background-color: #fff;
+//     overflow: hidden;
+//     .toast-msg {
+//       min-height: 20px;
+//       margin: 0 0 0 22px;
+//       padding: 0;
+//     }
+//   }
+// }
+// @include media-breakpoint-up(md) {
+//   .toast {
+//     min-width: 300px;
+//     padding: 10px 10px;
+//     box-shadow: 0 2px 4px rgba(0,0,0,.12), 0 0 6px rgba(0,0,0,.04);
+//     border-radius: 2px;
+//     background-color: #fff;
+//     overflow: hidden;
+//     .toast-msg {
+//       min-height: 20px;
+//       margin-left: 38px;
+//       margin-bottom: 0;
+//       padding: 0;
+//       color: #8391a5;
+//     }
+//   }
+// }

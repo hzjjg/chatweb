@@ -1,0 +1,6 @@
+
+<ul>
+    <li *ngFor="let item of roomContacts">
+        <a [ngClass]="{'qq-cst': item.type == roomContactType.QQ, 'online-cst': item.type == roomContactType.ONLINE}" href="{{item.url}}" target="_blank">{{item.name}}</a>
+    </li>
+</ul>

@@ -1,0 +1,85 @@
+$message-box-width: 300px;
+//$message-box-width: 85%;
+$message-box-border-radius: 3px;
+
+$message-box-header-padding: 15px 0 0;
+$message-box-title-line-height: auto;
+$message-box-title-color: #000;
+$message-box-body-color: #999;
+$message-box-body-padding: 10px 20px 15px;
+
+$message-box-footer-border-width: 10px;
+$message-box-footer-border-color: #ddd;
+
+$message-box-transition: transform .3s ease-out !default;
+//    ;
+
+.message-box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  @include translate3d(-50%, -50%, 0);
+  background-color: #fff;
+  width: $message-box-width;
+  border-radius: $message-box-border-radius;
+  user-select: none;
+  overflow: hidden;
+  //@include transition(.2s);
+  border: 1px solid $message-box-footer-border-color;
+}
+
+.modal {
+  &.fade .message-box {
+    @include transition($message-box-transition);
+    transform: translate3d(-50%, -50%, 0) scale(0.9);
+  }
+  &.show .message-box {
+    transform: translate3d(-50%, -50%, 0)
+  }
+}
+
+.message-box-header {
+  //display: flex;
+  //align-items: center; // vertically center it
+  //justify-content: space-between; // Put modal header elements (title and dismiss) on opposite ends
+  padding: $message-box-header-padding;
+  text-align: center;
+}
+.message-box-title {
+  margin-bottom: 0;
+  line-height: $message-box-title-line-height;
+  color: $message-box-title-color;
+  font-size: 1.2rem;
+}
+
+.message-box-body {
+  position: relative;
+  // Enable `flex-grow: 1` so that the body take up as much space as possible
+  // when should there be a fixed height on `.modal-dialog`.
+  flex: 1 1 auto;
+  padding: $message-box-body-padding;
+  color: $message-box-body-color;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.message-box-footer {
+  display: flex;
+  height: 40px;
+  line-height: 40px;
+  border-top: 1px solid #ddd;
+  align-items: center; // vertically center
+  justify-content: flex-end; // Right align buttons with flex property because text-align doesn't work on flex items
+  //border-top: $message-box-footer-border-width solid $message-box-footer-border-color;
+  .msgbox-btn {
+    float: left;
+    width: 50%;
+    text-align: center;
+    &.active {
+      width: 100%;
+    }
+  }
+  .msgbox-btn + .msgbox-btn {
+    border-left: 1px solid #ddd;
+  }
+}

@@ -1,0 +1,66 @@
+<!-- 发送红包 -->
+<div class="send-red-packet-container">
+    <a href="javascript:;" class="close" (click)="close()">
+        <i class="fa fa-close"></i>
+    </a>
+    <div class="title-wrapper clear-fix">
+        <span class="title">发红包</span>
+    </div>
+
+    <form class="content-wrapper p-3" #sendRedPacketForm="ngForm" (ngSubmit)="send()">
+        <div class="red-packet-input">
+            <label class="label-front">
+                <span class="luck-model px-1 ml-3">拼</span>
+                <span class="pl-2 pr-3">总金额</span>
+            </label>
+            <input type="text" placeholder="0.00" [(ngModel)]="createInfo.amount" name="amount" required #amount="ngModel" autocomplete="off">
+            <label class="label-behind">
+                <span class="pr-3 pl-2">元</span>
+            </label>
+        </div>
+       
+        <div class="tips">
+            <div>
+                <span>每个人抽到的金额随机</span>
+            </div>
+        </div>
+
+        <div class="red-packet-input mt-4 ">
+            <label class="label-front ">
+                <span class="px-3 ">红包个数</span>
+            </label>
+            <input type="text " placeholder="填写个数 " [(ngModel)]="createInfo.count" name="count" required #count="ngModel" autocomplete="off">
+            <label class="label-behind ">
+                <span class="pr-3 pl-2 ">个</span>
+            </label>
+        </div>
+      
+        <!--<div class="tips ">-->
+            <!--<span>在线共10人</span>-->
+        <!--</div>-->
+
+        <div class="red-packet-input mt-4" *ngIf="user.userType == 'Staff'">
+            <label class="label-front ">
+                <span class="px-3 ">回收比率</span>
+            </label>
+            <input type="text " placeholder="例: 0.9 " [(ngModel)]="createInfo.takeRate" name="takeRate" class="pr-3" #takeRate="ngModel" autocomplete="off">
+        </div>
+
+        <div class="red-packet-input mt-4 ">
+            <label class="label-front ">
+                <span class="px-3 ">留言</span>
+            </label>
+            <input type="text " class="pr-3 " [placeholder]="defaultDescription" name="description" [(ngModel)]="createInfo.description" autocomplete="off">
+        </div>
+
+        <div class="money mt-4 ">
+            <h1 *ngIf="!createInfo.amount ">￥0.00</h1>
+            <h1 *ngIf="createInfo.amount">￥{{createInfo.amount}}</h1>
+        </div>
+
+        <button type="submit" class="btn red-packet-button mt-4 "  [disabled]="!sendRedPacketForm.form.valid ||sendLoading">
+            <span>塞钱进红包</span>
+        </button>
+    </form>
+
+</div>

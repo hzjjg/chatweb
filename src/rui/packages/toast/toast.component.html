@@ -1,0 +1,6 @@
+<div class="toast row no-gutters align-items-center" [ngClass]="'toast-' + type" (click)="toastClick($event)">
+    <img class="toast-icon" [src]="makeLink()">
+    <p class="toast-msg col pl-2" [ngClass]="{'text-truncate':isMobile}">
+        <ng-content></ng-content>
+    </p>
+</div>

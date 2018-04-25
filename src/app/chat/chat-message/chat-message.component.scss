@@ -1,0 +1,297 @@
+@import "../../variables";
+$default-bubble-bg-color:rgba($color: $gray-200, $alpha: .8);
+
+.chat-message-wrapper {
+  pre {
+    margin: 0;
+  }
+  .message-time {
+    text-align: center;
+    margin: 10px auto;
+    margin-bottom: 20px;
+    max-width: 50%;
+    font-size: 12px;
+    padding: 1px 18px;
+    color: rgba($color: #fff, $alpha: .8);
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+  }
+  .message {
+    margin-bottom: 16px;
+    float: left;
+    width: 100%;
+  }
+  .user-msg{
+    position: relative;
+    width: 100%;
+    // overflow: hidden;
+  }
+  .avatar{
+    float: left;
+    // margin-top: 29px;
+    margin-left: 10px;
+    overflow: hidden;
+    border-radius: 3px;
+    background-color: #fff;
+    height: 40px;
+    width: 40px;
+  }
+     // overflow: hidden;
+  .message-from {
+    position: absolute;
+    left: 10px;
+    top: -28px;
+    font-weight: 400;
+    font-size: 12px;
+    height: 22px;
+    line-height: 24px;
+    color: #fff;
+    width: 350px;
+    @include text-truncate;
+  }
+
+  .message.me .avatar{
+    float: right;
+    margin-left: 0;
+    margin-right: 10px;
+    margin-top: 0;
+  }
+
+  .content {
+    .bubble {
+      max-width: 500px;
+      min-height: 1em;
+      display: inline-block;
+      vertical-align: top;
+      position: relative;
+      text-align: left;
+      font-size: 14px;
+      border-radius: 3px;
+      -moz-border-radius: 3px;
+      -webkit-border-radius: 3px;
+      margin: 0 10px;
+      padding: 5px;
+      background-color: $default-bubble-bg-color;
+      &.chat-notice-bubble {
+        min-width: 500px;
+      }
+    }
+
+
+    .bubble.left:after {
+      border-right-color: $default-bubble-bg-color;
+      border-right-width: 4px;
+    }
+
+    .bubble.left:after,
+    .bubble.left:before {
+      right: 100%;
+    }
+
+    .bubble:after,
+    .bubble:before {
+      position: absolute;
+      top: 10px;
+      border: 6px solid transparent;
+      content: " ";
+    }
+
+    .bubble.right:after {
+      border-left-color: $default-bubble-bg-color;
+    }
+    
+    .bubble.right:after,
+    .bubble.right:before {
+      left: 100%;
+    }
+
+    .buble-primary {
+      background-color: rgba($color: $blue, $alpha: .8);
+      color: $white;
+      &.right:after {
+        border-left-color: rgba($color: $blue, $alpha: .8);
+        border-left-width: 4px;
+      }
+    }
+    
+    .bubble-red-packet{
+      width: 200px;
+      height: 80px;
+      font-size: 14px;
+      border-radius: 3px;
+      -moz-border-radius: 3px;
+      -webkit-border-radius: 3px;
+      background-color: #fb9f3a;
+      margin: 0 10px;
+      padding: 0;
+      color: $white;
+      cursor: pointer;
+      .red-packet-message-content{
+        .red-packet-body{
+          height: 60px;
+          align-items: center;
+          img{
+            margin-left: 15px;
+            width: 30px;
+          }
+          .info{
+            margin-left: 15px;
+            .description{
+              width: 130px;
+              @include text-truncate;
+            }
+            .status{
+              line-height: 22px;
+              font-size: 12px;
+            }
+          }
+        }
+        .red-packet-footer{
+          height:20px;
+          font-size: 11px;
+          line-height: 20px;
+          padding-left: 10px;
+          background-color: #fff;
+          color: $gray-600; 
+          border-bottom-left-radius: 3px;
+          border-bottom-right-radius: 3px;
+        }
+      }
+      
+      &.opened{
+        background-color: #ffd09c;
+        &.bubble.left:after {
+          border-right-color: #ffd09c;
+        }
+        
+        &.bubble.right:after{
+          border-left-color: #ffd09c;
+        }
+      }
+
+      &.bubble.left:after {
+        border-right-color: #fb9f3a;
+      }
+      
+      &.bubble.right:after{
+        border-left-color: #fb9f3a;
+      }
+    }
+
+    .bubble-image{
+      .plain{
+        min-height: 30px;
+        min-width: 30px;
+    
+      }
+      img{
+        display: block;
+        max-width: 300px;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .group-notice-msg .content{
+    .bubble {
+      margin: 0 auto;
+      position: static;
+      display: block;
+    }
+  }
+
+  .me.message {
+    float: right;
+    text-align: right;
+    clear: right;
+  }
+
+  .group-tip-content {
+    @include text-truncate;
+    max-width: 300px;
+    display: inline-block;
+    padding: 0 15px;
+    border-radius: 2rem;
+    background: rgba(0, 0, 0, 0.3);
+    color: #fff;
+    font-size: 12px;
+  }
+
+}
+
+@include mobile{
+  $my-message-bubble-bg:$blue;
+  .chat-message-wrapper{
+    .message-time{
+      color:$gray-600;
+    }
+    .message-from {
+      color: $gray-600;
+    }
+    .content{
+      .bubble{
+        max-width: 240px;
+        background-color: $white;
+        &.chat-notice-bubble {
+          max-width: 375px;
+          min-width: 292px;
+          width: 90%;
+        }
+      }
+
+      .bubble.right{
+        background-color: $my-message-bubble-bg;
+        color: #fff;
+      }
+
+      .bubble.left:after {
+        border-right-color: $white;
+        border-right-width: 4px;
+      }
+
+      .bubble.right:after {
+        border-left-color: $my-message-bubble-bg;
+      }
+
+      .bubble-red-packet{
+        background-color: #fb9f3a !important;
+        color: $white;    
+        &.opened{
+          background-color: #ffd09c !important;
+          &.bubble.left:after {
+            border-right-color: #ffd09c;
+          }
+          
+          &.bubble.right:after{
+            border-left-color: #ffd09c;
+          }
+        }
+  
+        &.bubble.left:after {
+          border-right-color: #fb9f3a;
+        }
+        
+        &.bubble.right:after{
+          border-left-color: #fb9f3a;
+        }
+      }
+
+      .bubble-image{
+        img{
+          max-width: 200px;
+        }
+      }
+    }
+  }
+
+  .message-time {
+    text-align: center;
+    margin: 10px auto;
+    max-width: 50%;
+    font-size: 12px;
+    padding: 1px 18px;
+    color: $white;
+  }
+
+}

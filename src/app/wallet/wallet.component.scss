@@ -1,0 +1,43 @@
+
+.wealth-wrap {
+  .wealth-header {
+    position: relative;
+    height: 60px;
+    color: orange;
+    .wealth-icon {
+      overflow: hidden;
+      position: absolute;
+      left: 50%;
+      width: 60px;
+      height: 60px;
+      line-height: 60px;
+      font-size: 30px;
+      text-align: center;
+      background-color: oldlace;
+      border-radius: 50%;
+      transform: translate(-50%, 0);
+    }
+  }
+
+  .wealth-title {
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .wealth-money {
+    font-size: 22px;
+    text-align: center;
+  }
+  .wallet-red {
+    text-align: center;
+    a {
+      color: #999;
+      &:hover {
+        color: #333;
+      }
+    }
+  }
+  .history{
+    font-size: 12px;
+  }
+}

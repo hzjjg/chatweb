@@ -1,0 +1,52 @@
+@import "../../../app/variables";
+
+:host{
+    display: block;
+    height: 100%;
+}
+
+.function-wrapper{
+    height: 100%;
+}
+
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%; 
+    @include clearfix;
+    color: #fff;
+    background-color: $header-deep-gray;
+    // border-bottom: 1px solid $gray-400;
+    padding: 10px 15px;
+    margin: 0;
+
+    .btn-back{
+        position: absolute;
+        text-align: center;
+        top: 0;
+        left: 0;
+        width: 40px;
+        height: 100%;
+        color: #fff;
+        i{
+            font-size: 26px;
+            line-height: 50px;
+        }
+    }
+
+    .title{
+        font-weight: normal;
+        font-size: 18px;
+    }
+}
+.content{
+    display: block;
+    height: 100%;
+    padding-top: 47px;
+    // overflow: scroll;
+    iframe{
+        width: 100%;
+        min-height: 100%;
+    }
+}

@@ -1,0 +1,38 @@
+<footer class="row">
+    <a class="tab col" routerLink="/chat" routerLinkActive="active">
+        <div>
+            <div class="fa fa-comments"></div>
+        </div>
+        <div>
+            聊天
+        </div>
+    </a>
+    <a class="tab col message" routerLink="/contact" routerLinkActive="active">
+        <div>
+            <i class="fa fa-users">
+            </i>
+            <!--消息提示-->
+            <span class="msg-tip" *ngIf="msgTipsCount !=0 && msgTipsCount <=99">{{msgTipsCount}}</span>
+            <span class="msg-tip msg-tip-overflow" *ngIf="msgTipsCount >99">99+</span>
+        </div>
+        <div>
+            联系人
+        </div>
+    </a>
+    <a class="tab col" routerLink="/discover" routerLinkActive="active">
+        <div>
+            <i class="fa fa-superpowers"></i>
+        </div>
+        <div>
+            发现
+        </div>
+    </a>
+    <a class="tab col" routerLink="/mine" routerLinkActive="active">
+        <div>
+            <i class="fa fa-user"></i>
+        </div>
+        <div>
+            我
+        </div>
+    </a>
+</footer>

@@ -1,0 +1,28 @@
+@import "../../app/variables";
+
+.chat-area-wrapper {
+  height: 100%;
+  margin-left: 2px;
+  //border-left: $view-border;
+}
+
+ .sidebar-body {
+   height: 100%;
+ }
+.sidebar {
+  position: relative;
+  height: 100%;
+  width: 260px;
+  border-radius: 4px;
+  border: $view-border;
+  background-color: rgba($color: $body-sidebar-bg, $alpha: .96);
+}
+
+.contact-container {
+  width: 100%;
+  .user {
+    border-bottom: $user-border;
+  }
+}
+
+

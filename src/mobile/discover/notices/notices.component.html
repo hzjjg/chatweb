@@ -1,0 +1,14 @@
+<div class="notice-wrapper" *ngIf="notices" >
+    <div class="header">
+        <a href="javascript:;" class="btn-back" (click)="navBack()">
+            <i class="fa fa-angle-left"></i>
+        </a>
+        <div class="title text-center">系统公告</div>
+    </div>
+    <div class="content">
+        <div class="pb-3" *ngFor="let notice of notices | orderBy: 'order'; let i = index;">
+            <b>公告{{i + 1}}</b>
+            <p>{{notice.content}}</p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+@mixin scrollbar($color) {
+  &::-webkit-scrollbar {
+    width: 3px;
+    height: 3px;
+  }
+  &::-webkit-scrollbar-track {
+    width: 3px;
+    border-radius: 10px;
+    //background-color: rgb(255, 238, 242);
+  }
+  &::-webkit-scrollbar-thumb {
+    width: 3px;
+    border-radius: 0;
+    background-color: $color;
+  }
+}
+
+@mixin scrollbar_theme($color) {
+  &::-webkit-scrollbar-thumb {
+    background-color: $color;
+  }
+}

@@ -1,0 +1,35 @@
+$nav-bar-height: 40px;
+$nav-bar-font-size: 14px;
+.nav-bar {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #fff;
+  box-sizing: border-box;
+  color: $blue;
+  font-size: $nav-bar-font-size;
+  height: $nav-bar-height;
+  line-height: 1;
+  padding: 0 1rem;
+  position: relative;
+  text-align: center;
+  white-space: nowrap;
+}
+
+
+/**
+ * 导航条效果
+ */
+.nav-bar-buttons {
+  font-size: 18px;
+
+  .btn {
+    background-color: transparent;
+    border: 0;
+    box-shadow: none;
+    color: inherit;
+    display: inline-block;
+    padding: 0;
+    font-size: inherit;
+  }
+}

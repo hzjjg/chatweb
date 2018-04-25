@@ -1,0 +1,75 @@
+<div class="open-red-packet-container" *ngIf="!isOpen && !!redPacketInfo">
+    <a class="close" href="javascript:;" (click)="close()">
+        <i class="fa fa-close"></i>
+    </a>
+    <div class="user-info">
+        <div class="avatar">
+            <div class="img">
+                <img [src]="redPacketInfo.fromAvatar" alt="">
+            </div>
+        </div>
+        <div class="nickname">{{redPacketInfo.fromNick}}</div>
+        <div class="tip">给你发了一个红包</div>
+    </div>
+    <div class="description">{{redPacketInfo.description}}</div>
+    <div class="open-btn" (click)="open()"></div>
+</div>
+
+
+<div class="red-packet-result-container" *ngIf="isOpen && redPacketInfo">
+    <div class="header">
+        <a href="javascript:;" class="icon-close" (click)="close()">
+            <i class="fa fa-close"></i>
+        </a>
+        <span> | 红包详情</span>
+    </div>
+
+    <div class="result-body">
+        <div class="user-info">
+            <div class="avatar">
+                <div class="img">
+                    <img src="{{myInfo.avatar}}" alt="">
+                </div>
+            </div>
+            <div class="nickname">{{myInfo.nickname}}</div>
+            <div class="description">{{redPacketInfo.description}}</div>
+        </div>
+
+        <div class="my-result" *ngIf="myAllot">
+            <div class="money">
+                <span class="number">{{myAllot.money}}</span>
+                <span class="unit">元</span>
+            </div>
+            <div class="tips">
+                已存入零钱，可直接转账
+            </div>
+        </div>
+
+        <div class="results">
+            <div class="results-info">
+                已领取{{redPacketInfo.count - redPacketInfo.remain}}/{{redPacketInfo.count}}个，共{{receivedAmount}}/{{redPacketInfo.amount}}元
+            </div>
+            <div class="winners">
+                <div class="winner" *ngFor="let allot of redPacketInfo.allots">
+                    <div class="avatar">
+                        <div class="img">
+                            <img src="{{allot.avatar}}" alt="">
+                        </div>
+                    </div> 
+                    <div class="info"> 
+                        <div class="name">{{allot.nickname}}</div>
+                        <div class="time">{{allot.time | imtime}}</div>
+                    </div>
+                    <div class="result-money">
+                        {{allot.money}}元
+                    </div>
+                </div>
+            </div>
+            <div class="see-record" *ngIf="myInfo.userType != 'Staff'">
+                <a href="javascript:;" (click)="openMyRecord()">
+                    查看我的红包记录
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,181 @@
+@import "../variables";
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.chat-search {
+  padding: 10px 15px;
+  .search {
+    position: relative;
+  }
+  input {
+    padding: 5px 35px 5px 15px;
+    font-size: 12px;
+    outline: none;
+    border: 0;
+    border-radius: 4px;
+  }
+  .search-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    line-height: 30px;
+    width: 35px;
+    text-align: center;
+  }
+}
+
+.online-count{
+  height: 18px;
+  font-size: 12px;
+  color: #fff;
+}
+
+@include pc() {
+  .contact-nav {
+    border-bottom: $view-border;
+    background-color: #2e3238;
+    li {
+
+    }
+    .nav-item {
+      height: 35px;
+      line-height: 35px;
+      text-align: center;
+      cursor: pointer;
+      &.active {
+        color: #ffc107;
+      }
+    }
+  }
+
+  .chat-search {
+    border-bottom: $user-border;
+    .search {
+      position: relative;
+    }
+    input {
+      background-color: #26292e;
+      color: #fff;
+    }
+    .search-icon {
+      color: #fff;
+    }
+  }
+
+  .contact-chat {
+    overflow: auto;
+    position: absolute;
+    top: 155px;
+    bottom: 0;
+    width: 100%;
+
+  }
+
+  .contextmenu {
+    display: none;
+    overflow: hidden;
+    z-index: 99999;
+    position: fixed;
+    right: 10px;
+    width: 160px;
+    border-radius: 6px;
+
+    .dropdown_menu {
+      border: $border-color;
+      background-color: #fff;
+      color: #666;
+    }
+    &.active {
+      display: block;
+    }
+    li {
+      border-bottom: $border-color;
+      &:last-child {
+        border-bottom: 0;
+      }
+      a {
+        display: block;
+        padding: 10px;
+        color: #666;
+        &:hover {
+          background-color: #eee;
+        }
+      }
+    }
+  }
+}
+
+@include mobile() {
+  .contact-chat {
+    overflow: auto;
+    position: absolute;
+    top: 88px;
+    bottom: -1px;
+    width: 100%;
+    ul > li {
+      line-height: 30px;
+      padding: 12px 8px 11px 18px;
+      border-bottom: 1px solid #e5e5e5;
+      background-color: #fff;
+      color: #666;
+      .qq-cst {
+        height: 30px;
+        line-height: 30px;
+        padding: 0 10px;
+        border-radius: 4px;
+        color: #fff;
+        background-color: orange;
+      }
+    }
+  }
+
+  .staffs{ 
+    width: 30px;
+    a{
+      color: $gray-600;
+      font-size: 20px;
+      line-height: 34px;
+    
+    }
+    .cst-serve {
+      z-index: 999;
+      overflow: hidden;
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 25px;
+      padding: 5px 0;
+      border-radius: 4px;
+      background-color: rgba(9, 23, 32, 0.8);
+      &.active {
+        display: block;
+      }
+    }
+  }
+
+  .chat-search {
+    border-bottom: 1px solid $gray-200;
+    background-color: #fff;
+    padding: 12px 15px;
+    .search-icon {
+      line-height: 38px;
+      color: #666;
+    }
+    input{
+      width: 100%;
+      padding: 10px 35px 10px 15px;
+      background-color: $gray-200;
+    }
+
+  }
+
+  .online-count{
+    color: #999;
+    margin-left: 22px;
+  }
+
+}

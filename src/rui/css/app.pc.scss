@@ -1,0 +1,54 @@
+$app: 'pc';
+@import "functions";
+@import "variables";
+@import "mixins";
+//@import "print";
+@import "reboot";
+//@import "type";
+//@import "images";
+//@import "code";
+@import "grid";
+//@import "tables";
+//@import "forms";
+@import "buttons";
+
+@import "transitions";
+//@import "dropdown";
+//@import "button-group";
+//@import "input-group";
+//@import "custom-forms";
+@import "nav-bar";
+//@import "nav";
+//@import "card";
+//@import "breadcrumb";
+//@import "pagination";
+//@import "badge";
+//@import "jumbotron";
+//@import "alert";
+//@import "progress";
+//@import "media";
+//@import "list-group";
+@import "close";
+
+@import "modal";
+//@import "tooltip";
+//@import "popover";
+//@import "carousel";
+
+//自定义扩展
+@import "popup";
+@import "loading";
+@import "message-box";
+@import "toast";
+
+//工具区
+@import "utilities";
+
+
+
+//@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+//@import "~bootstrap/scss/functions";
+//@import "~bootstrap/scss/variables";
+//@import "~bootstrap/scss/mixins";
+//@import "~bootstrap/scss/forms";

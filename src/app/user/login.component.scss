@@ -1,0 +1,119 @@
+@import "../variables";
+
+.fm-wrap{
+  padding-bottom: 30px;
+}
+.fm-header,
+.modify-password-header {
+  padding: 20px 20px 10px;
+  border-bottom: 1px solid $form-border;
+}
+.fm-body {
+  padding: 20px 15px 10px;
+}
+.fm-footer {
+  padding: 0 15px;
+}
+
+//表头内容
+.fm-title {
+  font-size: 16px;
+  font-weight: normal;
+}
+
+//表主体内容
+.fm-mask {
+  padding: 0 0 20px;
+  input {
+    width: 100%;
+    height: $input-height;
+    line-height: $input-height;
+    padding: 0 10px;
+    border: 1px solid #D7D8D9;
+    background: #FFF;
+    font: 13.3333px Arial;
+    box-sizing: border-box;
+    box-shadow: none;
+    outline: 0;
+  }
+}
+.fm-button {
+  height: $input-height;
+}
+
+//表按钮
+.fm-btn-link {
+  color: #999;
+  &:hover {
+    color: $fm-login-button;
+  }
+}
+
+//错误提示
+.login-wrap {
+  .fm-error {
+    display: none;
+    margin-bottom: 20px;
+    &.active {
+      display: block;
+    }
+  }
+}
+
+.fm-error {
+  position: relative;
+  height: $input-height;
+  line-height: $input-height;
+  margin-top: -1px;
+  padding: 0 10px;
+  border: 1px solid #f88;
+  color: #f88;
+  .error-icon {
+    padding-right: 10px;
+    font-size: 20px;
+    vertical-align: text-top;
+  }
+}
+
+
+
+
+@include mobile(){
+  .fm-header{
+    position: relative;
+    height: 50px;
+    padding: 0;
+    background-color: $header-deep-gray;
+    .back{
+      position: absolute;
+      font-size: 24px;
+      color:#fff;
+      top: 5px;
+      left: 15px;
+    }
+    .fm-title{
+      margin-left: 50px;
+      line-height: 50px;
+      color: #fff;
+    }
+  }
+  .fm-mask{
+    margin: 10px 0;
+    input {
+      padding: 0;
+      border: 0;
+      border-bottom: 1px solid #D7D8D9;
+    }
+  }
+  .fm-error {
+    padding: 0;
+    border: 0;
+  }
+  .modify-password-form {
+    .fm-body{
+      label{
+        padding-top: 14px;
+      }
+    }
+  }
+}

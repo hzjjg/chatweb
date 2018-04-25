@@ -1,0 +1,42 @@
+<div #tipContent class="recent-red-packets rewrite-scrollbar">
+    <div class="content-header">
+        <div class="title">最近红包</div>
+        <a href="javascript:;" class="fa fa-close" (click)="close()"></a>
+    </div>
+    <div class="clearfix">
+        <ng-container *ngIf="redPackets && redPackets.length>0">
+            <div class="red-packet-from" *ngFor="let redPacket of redPackets" [title]="redPacket.fromNick + '的红包'">
+                <a href="javascript:;" class="red-packet" (click)="openRedPacket(redPacket)" *ngIf="!redPacket._opened">
+                    <img src="/images/lucky_money.png" alt="">
+                    <div class="nick-name text-truncate">{{redPacket.fromNick}}</div>
+                </a>
+                <div class="red-packet" *ngIf="redPacket._opened">
+                    <img src="/images/lucky_money_open.png" alt="">
+                    <div class="nick-name text-truncate">{{redPacket.fromNick}}</div>
+                </div>
+            </div>
+        </ng-container>
+
+        <div class="text-center text-secondary py-3" *ngIf="loadingTips">
+            <span>加载中...</span>
+        </div>
+
+        <div class="text-center text-secondary py-3" *ngIf="!loadingTips &&(!redPackets || redPackets.length==0)">
+            <span>无最近红包</span>
+        </div>
+    </div>
+    <!-- 
+    <div class="tip-messages-wrapper rewrite-scrollbar" *ngIf="activeRedPacket && activeRedPacket.allots">
+        <div *ngIf="activeRedPacket.allots.length==0" class="p-2 text-secondary text-center"> 无历史记录 </div>
+        <div class="tip-message" *ngFor="let allot of activeRedPacket.allots">
+            <span>{{allot.nickname}}</span>
+            <span>在</span>
+            <span>{{allot.time}}</span>
+            <span>领取</span>
+        </div>
+    </div>
+
+    <div class="btn-open-red-packet" *ngIf="activeRedPacket">
+        <a href="javascript:;" (click)="openRedPacket()">立即领取</a>
+    </div> -->
+</div>

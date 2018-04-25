@@ -1,0 +1,104 @@
+@import "../../app/variables";
+
+p {
+  margin: 0;
+  padding: 0;
+}
+.contact-header {
+  font-size: 12px;
+  border-bottom: $user-border;
+
+  .user-container {
+    position: relative; //width: 80px;
+    height: 80px;
+
+    .user-right {
+      width: 180px;
+      margin-left: 80px;
+    }
+  }
+  .user-avatar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 80px;
+    border-right: $user-border;
+    & > a {
+      overflow: hidden;
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      width: 50px;
+      height: 50px;
+      border-radius: 4px;
+      background-color: #fff;
+      transform: translate(-50%, 0);
+
+    }
+    img {
+      width: 100%;
+    }
+  }
+
+
+  .user-info {
+    padding: 10px;
+    //border-bottom: $user-border;
+
+    color: #fff;
+    .user-nickname {
+      width: 140px;
+      font-size: 0.8rem;
+    }
+  }
+  .user-nickname {
+    height: 23px;
+    font-size: 0.8rem;
+  }
+  .user-wealth {
+    padding: 0 10px 10px;
+  }
+  .login-area {
+    padding: 5px 10px;
+    .btn-login {
+      min-width: 0 !important;
+    }
+    a {
+      color: #fff;
+    }
+  }
+}
+
+.contextmenu {
+  display: none;
+  overflow: hidden;
+  z-index: 99999;
+  position: absolute;
+  right: 10px;
+  width: 160px;
+  border-radius: 6px;
+
+  .dropdown_menu {
+    border: $border-color;
+    background-color: #fff;
+    color: #666;
+  }
+  &.active {
+    display: block;
+  }
+  li {
+    border-bottom: $border-color;
+    &:last-child {
+      border-bottom: 0;
+    }
+    a {
+      display: block;
+      padding: 10px;
+      color: #666;
+      &:hover {
+        background-color: #eee;
+      }
+    }
+  }
+}

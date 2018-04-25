@@ -1,0 +1,12 @@
+<header class="clearfix">
+    <div class="btn-back" (click)="back()">
+        <i class="fa fa-angle-left"></i>
+    </div>
+    <div class=" title " *ngIf="chatWithUser">{{chatWithUser.nickname}}</div>
+    <div class="float-right btn-user-info ">
+        <!-- <i class="fa fa-user "></i> -->
+    </div>
+</header>
+<div class="chat-container">
+    <chat [sessionType]="sessionType" [chatWith]="chatWith"></chat>
+</div>

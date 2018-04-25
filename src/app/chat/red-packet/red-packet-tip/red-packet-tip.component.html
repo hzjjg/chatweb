@@ -1,0 +1,30 @@
+<div class="red-packet-tip">
+    <img #tipIcon src="/images/lucky_money.png" class="tip-icon" title="新红包" alt="" (click)="toggleTipContent()">
+    <a href="javascript:;" class="btn-recent-red-packet" (click)="openTipContent()" title="点击打开最近红包">最近红包</a>
+
+    <div #tipContent class="tip-content" [hidden]="!isShowContent">
+        <div class="text-center text-secondary py-3" *ngIf="!redPacket">
+            <span>无最近红包</span>
+        </div>
+
+        <ng-container *ngIf="redPacket">
+            <div class="red-packet-from clearfix text-truncate">
+                <img [src]="redPacket.fromAvatar" alt="">
+                <span class="nick-name">{{redPacket.fromNick}} 的红包</span>
+            </div>
+            <div class="tip-messages-wrapper rewrite-scrollbar">
+                <div *ngIf="redPacket.allots.length==0" class="p-2 text-secondary text-center"> 无历史记录 </div>
+                <div class="tip-message text-truncate" *ngFor="let allot of redPacket.allots">
+                    <span>{{allot.nickname}}</span>
+                    <span>在</span>
+                    <span>{{allot.time}}</span>
+                    <span>领取</span>
+                </div>
+            </div>
+            <div class="btn-open-red-packet">
+                <a href="javascript:;" (click)="openRedPacket()">立即领取</a>
+            </div>
+        </ng-container>
+
+    </div>
+</div>

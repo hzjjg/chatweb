@@ -1,0 +1,54 @@
+@import "../../../app/variables";
+
+:host{
+    display: block;
+    height: 100%;
+}
+
+.notice-wrapper{
+    height: 100%;
+}
+
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    color:#fff;
+    @include clearfix;
+    background-color: $header-deep-gray;
+    // border-bottom: 1px solid $gray-400;
+    padding: 10px 15px;
+    margin: 0;
+
+    .btn-back{
+        position: absolute;
+        text-align: center;
+        top: 0;
+        left: 0;
+        width: 40px;
+        height: 100%;
+        color: #fff;
+        i{
+            font-size: 26px;
+            line-height: 50px;
+        }
+    }
+
+    .title{
+        font-weight: normal;
+        font-size: 18px;
+    }
+}
+.content{
+    display: block;
+    height: 100%;
+    padding: 66px 15px 15px 15px;
+    font-size: 16px;
+    overflow-y: scroll;
+    p{
+      line-height: 1.6;
+      font-size: 16px;
+    }
+}
+
